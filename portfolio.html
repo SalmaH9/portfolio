@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma Hussein Taha - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a23 0%, #1a1a3d 100%); /* Starry night gradient */
+            color: #e2e8f0;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.3"%3E%3Cg fill="none" stroke="%23ffffff" stroke-width="1"%3E%3Ccircle cx="100" cy="100" r="2"/%3E%3Ccircle cx="200" cy="150" r="1"/%3E%3Ccircle cx="300" cy="80" r="3"/%3E%3Ccircle cx="400" cy="200" r="2"/%3E%3Ccircle cx="500" cy="120" r="1"/%3E%3Ccircle cx="600" cy="180" r="2"/%3E%3Ccircle cx="700" cy="90" r="1"/%3E%3Ccircle cx="150" cy="300" r="2"/%3E%3Ccircle cx="250" cy="350" r="1"/%3E%3Ccircle cx="350" cy="280" r="3"/%3E%3Ccircle cx="450" cy="400" r="2"/%3E%3Ccircle cx="550" cy="320" r="1"/%3E%3Ccircle cx="650" cy="380" r="2"/%3E%3Ccircle cx="750" cy="290" r="1"/%3E%3C/g%3E%3C/svg%3E') repeat;
+            z-index: -1; /* Starry effect in the background */
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            padding: 40px 20px; /* Reduced padding for smaller screens */
+            position: relative;
+            text-align: center;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1a2a44, #2a3b66);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px; /* Reduced margin for smaller screens */
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d4a017;
+            transform: scale(1.1);
+        }
+
+        nav .icon {
+            font-size: 18px; /* Slightly smaller icon for better fit */
+            color: #d4a017;
+            margin-right: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover .icon {
+            transform: scale(1.2);
+        }
+
+        /* Section Backgrounds */
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 10, 35, 0.7), rgba(26, 26, 61, 0.5));
+            z-index: 1;
+        }
+
+        #home .content {
+            z-index: 2;
+            align-items: flex-end;
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin-right: 30px; /* Reduced margin for better fit */
+        }
+
+        #about, #skills, #projects, #certificates, #contact {
+            position: relative;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(212, 160, 23, 0.5);
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #d4a017;
+            text-shadow: 0 0 8px rgba(212, 160, 23, 0.3);
+        }
+
+        p, ul {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-size: 16px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Cards */
+        .card, .contact-links a {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 10px; /* Reduced margin for better spacing */
+            border-radius: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .card:hover, .contact-links a:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 16px rgba(212, 160, 23, 0.4);
+        }
+
+        /* Profile Image in Home Section */
+        .home-profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 3px solid #d4a017;
+        }
+
+        /* Skills Card Grid */
+        .skills-grid, .certificates-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly wider cards */
+            gap: 15px; /* Reduced gap for better fit */
+            width: 100%;
+            max-width: 1200px;
+            padding: 15px;
+        }
+
+        .skills-grid .card, .certificates-grid .card, .projects-grid .card {
+            max-width: none;
+        }
+
+        .skills-grid .card h3 {
+            display: flex;
+            align-items: center;
+            color: #d4a017;
+            margin-bottom: 15px;
+            font-size: 20px; /* Adjusted for readability */
+        }
+
+        .skills-grid .card h3::before {
+            content: '';
+            display: inline-block;
+            width: 20px; /* Smaller icon for better fit */
+            height: 20px;
+            margin-right: 8px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .skills-grid .card.languages h3::before {
+            content: '💻';
+        }
+
+        .skills-grid .card.technologies h3::before {
+            content: '🛠️';
+        }
+
+        .skills-grid .card.network-protocols h3::before {
+            content: '🌐';
+        }
+
+        .skills-grid .card.concepts h3::before {
+            content: '💡';
+        }
+
+        .skills-grid .card.soft-skills h3::before {
+            content: '🤝';
+        }
+
+        .skills-grid .card.spoken-languages h3::before {
+            content: '🗣️';
+        }
+
+        .skills-grid .card li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px; /* Smaller font for better fit */
+        }
+
+        .skills-grid .card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+        }
+
+        .skills-grid .card li:hover {
+            transform: scale(1.05);
+        }
+
+        .skills-grid .card li:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a2a44;
+            color: #e2e8f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* Smaller Certification Cards */
+        .certificates-grid .card {
+            padding: 12px; /* Reduced padding */
+            margin: 8px;
+            font-size: 13px; /* Smaller font */
+        }
+
+        .certificates-grid .card p {
+            margin: 0;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Reduced gap for smaller screens */
+            max-width: 1200px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px; /* Reduced padding */
+            border-radius: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            max-width: 350px;
+            text-align: center;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+            border: 3px solid #d4a017;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .profile-card h3 {
+            color: #d4a017;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-size: 20px; /* Adjusted for readability */
+        }
+
+        .profile-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: #d4a017;
+        }
+
+        .profile-card p {
+            font-size: 14px; /* Smaller font for better fit */
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+
+        .about-details {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .about-details p {
+            font-size: 16px; /* Slightly smaller font */
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        .about-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-details ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 14px; /* Smaller font */
+        }
+
+        .about-details ul li:hover {
+            color: #d4a017;
+            transform: scale(1.03);
+        }
+
+        .about-details ul li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 15px;
+        }
+
+        .projects-grid .card {
+            max-width: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .projects-grid .card h3 {
+            color: #d4a017;
+            margin-bottom: 10px;
+            font-size: 20px; /* Adjusted for readability */
+        }
+
+        .projects-grid .card p {
+            font-size: 14px; /* Smaller font */
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .github-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #d4a017;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-size: 14px; /* Smaller font */
+        }
+
+        .github-btn:hover {
+            transform: translateY(-3px);
+            background: #e2e8f0;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Reduced gap */
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px; /* Reduced padding */
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .contact-links a .icon {
+            margin-right: 8px;
+            font-size: 16px; /* Smaller icon */
+            text-decoration: none;
+        }
+
+      
+    /* Typewriter Effect */
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #d4a017;
+    animation: typing 1.5s steps(16, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #d4a017; }
+}
+
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px; /* Reduced padding */
+            background: #d4a017;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-size: 14px; /* Smaller font */
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            background: #e2e8f0;
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            z-index: 2;
+            font-size: 14px;
+            color: #e2e8f0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Delay for staggered animations */
+        .fade-in:nth-child(1) { animation-delay: 0.2s; }
+        .fade-in:nth-child(2) { animation-delay: 0.4s; }
+        .fade-in:nth-child(3) { animation-delay: 0.6s; }
+        .fade-in:nth-child(4) { animation-delay: 0.8s; }
+        .fade-in:nth-child(5) { animation-delay: 1.0s; }
+        .fade-in:nth-child(6) { animation-delay: 1.2s; }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 8px;
+            }
+
+            nav a {
+                margin: 8px 0;
+                font-size: 14px;
+            }
+
+            nav .icon {
+                font-size: 16px;
+                margin-right: 5px;
+            }
+
+            h1 {
+                font-size: 36px; /* Smaller font */
+            }
+
+            h2 {
+                font-size: 28px; /* Smaller font */
+            }
+
+            p, ul {
+                font-size: 14px; /* Smaller font */
+            }
+
+            .skills-grid, .certificates-grid, .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 15px;
+                margin: 5px;
+            }
+
+            .typewriter {
+                font-size: 20px; /* Smaller font */
+            }
+
+            .contact-links a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+
+            .contact-links a .icon {
+                font-size: 14px;
+                margin-right: 6px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center; /* Center align for better layout */
+            }
+
+            .profile-card {
+                max-width: 100%;
+                padding: 12px;
+            }
+
+            .profile-image {
+                width: 90px; /* Smaller image */
+                height: 90px;
+            }
+
+            .home-profile-image {
+                width: 100px; /* Smaller image */
+                height: 100px;
+            }
+
+            #home .content {
+                margin-right: 15px; /* Reduced margin */
+                align-items: center; /* Center on small screens */
+                text-align: center;
+            }
+
+            .project-image {
+                height: 120px; /* Smaller image height */
+            }
+
+            .github-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .download-btn {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .scroll-down {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .skills-grid .card h3,
+            .projects-grid .card h3,
+            .profile-card h3 {
+                font-size: 18px;
+            }
+
+            .skills-grid .card li,
+            .about-details ul li,
+            .projects-grid .card p,
+            .certificates-grid .card p {
+                font-size: 12px;
+            }
+
+            .home-profile-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .project-image {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <style>
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+            .typewriter {
+                border-right: none;
+                white-space: normal;
+                animation: none;
+                width: auto;
+            }
+            .skills-grid .card li:hover::after {
+                display: none;
+            }
+        </style>
+        <p style="color: #e2e8f0; text-align: center; padding: 20px;">
+            JavaScript is disabled. Please enable JavaScript to experience the full functionality of this portfolio, including animations and the particle background.
+        </p>
+    </noscript>
+
+    <nav>
+        <a href="#home"><span class="icon">🏠</span>Home</a>
+        <a href="#about"><span class="icon">ℹ️</span>About</a>
+        <a href="#skills"><span class="icon">🛠️</span>Skills</a>
+        <a href="#projects"><span class="icon">📂</span>Projects</a>
+        <a href="#certificates"><span class="icon">🏆</span>Certificates</a>
+        <a href="#contact"><span class="icon">📧</span>Contact</a>
+    </nav>
+
+    <section id="home">
+        <div id="particles-js"></div>
+        <div class="content">
+            <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="home-profile-image fade-in">
+            <h1 class="typewriter">Salma Hussein Taha</h1>
+            <p class="fade-in">Full Stack Web Developer | Network Engineer</p>
+            <a href="Salma Hussein Resume.pdf" class="download-btn fade-in">Download Resume</a>
+        </div>
+        <div class="scroll-down fade-in">Scroll Down ↓</div>
+    </section>
+
+    
+
+    <section id="about">
+        <h2 class="fade-in">About Me</h2>
+        <div class="about-content">
+            <div class="profile-card fade-in">
+                <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="profile-image">
+                <h3>Salma Hussein Taha</h3>
+                <p><strong>University:</strong> Assiut International Technological University</p>
+                <p><strong>Focus:</strong> Full Stack Web Development & Network Engineering</p>
+                <p><strong>Year:</strong> 2nd Year Student</p>
+            </div>
+            <div class="about-details fade-in">
+                <p>I am a dedicated second-year Information Technology student passionate about creating innovative IT solutions. Here are some highlights:</p>
+                <ul>
+                    <li>Expertise in Full Stack Web Development (HTML, CSS, JavaScript, SQLite) and Network Engineering (RIP, OSPF, VPN).</li>
+                    <li>Holder of multiple Cisco certifications in Cybersecurity, Ethical Hacking, and Data Science.</li>
+                    <li>Currently pursuing CCNA and CCNP to advance my networking skills.</li>
+                    <li>Fluent in English (CEFR B2), with strong problem-solving and collaboration skills.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="fade-in">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="card languages fade-in">
+                <h3>Languages</h3>
+                <ul>
+                    <li data-tooltip="Proficient in semantic markup">HTML</li>
+                    <li data-tooltip="Skilled in responsive design">CSS</li>
+                    <li data-tooltip="Experienced in DOM manipulation">JavaScript</li>
+                    <li data-tooltip="Used in Flutter app development">Dart</li>
+                </ul>
+            </div>
+            <div class="card technologies fade-in">
+                <h3>Technologies</h3>
+                <ul>
+                    <li data-tooltip="Database for web projects">SQLite</li>
+                    <li data-tooltip="Framework for mobile apps">Flutter</li>
+                    <li data-tooltip="Network simulation tool">Cisco Packet Tracer</li>
+                    <li data-tooltip="Version control system">Git</li>
+                    <li data-tooltip="Code collaboration platform">GitHub</li>
+                </ul>
+            </div>
+            <div class="card network-protocols fade-in">
+                <h3>Network Protocols</h3>
+                <ul>
+                    <li data-tooltip="Routing Information Protocol">RIP</li>
+                    <li data-tooltip="Open Shortest Path First">OSPF</li>
+                    <li data-tooltip="Secure network connectivity">Site-to-Site VPN</li>
+                    <li data-tooltip="Dynamic Host Configuration Protocol">DHCP</li>
+                    <li data-tooltip="Access Control Lists">ACL</li>
+                    <li data-tooltip="Zone-Based Policy Firewall">ZPF</li>
+                </ul>
+            </div>
+            <div class="card concepts fade-in">
+                <h3>Concepts</h3>
+                <ul>
+                    <li data-tooltip="Securing digital systems">Cybersecurity</li>
+                    <li data-tooltip="Penetration testing skills">Ethical Hacking</li>
+                    <li data-tooltip="Designing network infrastructure">Network Engineering</li>
+                    <li data-tooltip="Building responsive websites">Web Development</li>
+                    <li data-tooltip="Internet of Things basics">IoT</li>
+                    <li data-tooltip="Data analysis fundamentals">Data Science</li>
+                </ul>
+            </div>
+            <div class="card soft-skills fade-in">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li data-tooltip="Addressing technical challenges">Problem Solving</li>
+                    <li data-tooltip="Effective team collaboration">Team Collaboration</li>
+                </ul>
+            </div>
+            <div class="card spoken-languages fade-in">
+                <h3>Languages (Spoken)</h3>
+                <ul>
+                    <li data-tooltip="Proficient communication">English (CEFR B1-B2)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="fade-in">Selected Projects</h2>
+        <div class="projects-grid">
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x150?text=Portfolio+Website" alt="Personal Portfolio Website" class="project-image">
+                <h3>Personal Portfolio Website</h3>
+                <p>Developed a responsive portfolio using HTML, CSS, and JavaScript, optimizing UI with DOM manipulation for a 30% faster load time.</p>
+                <a href="https://github.com/placeholder/portfolio-website" class="github-btn">View on GitHub</a>
+            </div>
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x150?text=University+Website" alt="University Website" class="project-image">
+                <h3>University Website</h3>
+                <p>Collaborated on a scalable university website using HTML, CSS, JavaScript, Dart, and SQLite, enhancing accessibility and performance.</p>
+                <a href="https://github.com/placeholder/university-website" class="github-btn">View on GitHub</a>
+            </div>
+            <div class="card fade-in">
+                <img src="https://via.placeholder.com/300x150?text=Network+Simulation" alt="Network Simulation" class="project-image">
+                <h3>Network Simulation</h3>
+                <p>Designed a secure office network in Cisco Packet Tracer with RIP, OSPF, DHCP, VPN, and AAA, ensuring robust performance.</p>
+                <a href="https://github.com/placeholder/network-simulation" class="github-btn">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2 class="fade-in">Certifications</h2>
+        <div class="certificates-grid">
+            <div class="card fade-in">
+                <p><strong>Learn HTML & CSS</strong> - ITI, Jul 2024</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Database Fundamentals</strong> - ITI, Sep 2024</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Introduction to Cybersecurity</strong> - Cisco Networking Academy, Jan 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Network Technician Career Path</strong> - Cisco Networking Academy, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Junior Cybersecurity Analyst Career Path</strong> - Cisco Networking Academy, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Ethical Hacker</strong> - Cisco Networking Academy, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Introduction to Internet of Things</strong> - Cisco Networking Academy, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>Introduction to Data Science</strong> - Cisco Networking Academy, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>English for IT 1</strong> - Cisco Networking Academy & OpenEDG, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>English for IT 2 (CEFR B2)</strong> - Cisco Networking Academy & OpenEDG, Feb 2025</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>CCNA (In Progress)</strong> - Cisco Networking Academy</p>
+            </div>
+            <div class="card fade-in">
+                <p><strong>CCNP (In Progress)</strong> - Cisco Networking Academy</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="fade-in">Get in Touch</h2>
+        <p class="fade-in">
+            I'm excited to connect and explore opportunities in web development, networking, and more. Reach out to me via any of the methods below!
+        </p>
+        <div class="contact-links fade-in">
+            <a href="mailto:ssth4276@gmail.com"><span class="icon">📧</span>Email</a>
+            <a href="https://linkedin.com/in/salma-hussein-a3b103356"><span class="icon">💼</span>LinkedIn</a>
+            <a href="tel:+201063083970"><span class="icon">📞</span>Phone</a>
+        </div>
+    </section>
+
+    <script>
+        // Ensure DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Particles.js for Home Section
+            if (window.particlesJS) {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: '#ffffff' }, /* Changed to white to match starry background */
+                        shape: { type: 'circle' },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                    },
+                    retina_detect: true
+                });
+                console.log('Particles.js loaded successfully');
+            } else {
+                console.warn('Particles.js not loaded. Particle background unavailable.');
+            }
+
+            // Smooth Scrolling for Navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
