@@ -37,6 +37,22 @@ section {
   text-align: center;
 }
 
+/* Professional Reveal Animation */
+.professional-reveal {
+  animation: professionalReveal 0.6s ease-in-out forwards;
+}
+
+@keyframes professionalReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Top Navigation Bar */
 nav {
   position: fixed;
@@ -155,7 +171,7 @@ nav {
   margin-right: 30px;
 }
 
-#about, #skills, #projects, #certificates, #contact {
+#about, #experience, #skills, #projects, #certificates, #contact {
   position: relative;
 }
 
@@ -172,6 +188,12 @@ h2 {
   margin-bottom: 30px;
   color: #d4a017;
   text-shadow: 0 0 8px rgba(212, 160, 23, 0.3);
+}
+
+h3 {
+  font-size: 20px;
+  color: #d4a017;
+  margin-bottom: 15px;
 }
 
 p, ul {
@@ -206,8 +228,40 @@ ul li {
 }
 
 .card:hover, .contact-links a:hover {
-  transform: scale(1.05) rotate(1deg);
+  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(212, 160, 23, 0.4);
+}
+
+/* Experience Section */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 15px;
+}
+
+.experience-grid .card {
+  max-width: none;
+  text-align: left;
+}
+
+.experience-grid .card p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.experience-grid .card ul li {
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+.experience-grid .card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #d4a017;
 }
 
 /* Profile Image in Home Section */
@@ -290,7 +344,7 @@ ul li {
 }
 
 .skills-grid .card li:hover {
-  transform: scale(1.05);
+  transform: translateX(5px);
 }
 
 .skills-grid .card li:hover::after {
@@ -337,7 +391,6 @@ ul li {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   max-width: 350px;
   text-align: center;
-  animation: slideIn 1s ease-out forwards;
 }
 
 .profile-image {
@@ -348,17 +401,6 @@ ul li {
   display: block;
   object-fit: cover;
   border: 3px solid #d4a017;
-}
-
-@keyframes slideIn {
-  from {
-      opacity: 0;
-      transform: translateX(-50px);
-  }
-  to {
-      opacity: 1;
-      transform: translateX(0);
-  }
 }
 
 .profile-card h3 {
@@ -412,7 +454,7 @@ ul li {
 
 .about-details ul li:hover {
   color: #d4a017;
-  transform: scale(1.03);
+  transform: translateX(5px);
 }
 
 .about-details ul li::before {
@@ -560,28 +602,6 @@ ul li {
   60% { transform: translateY(-5px); }
 }
 
-/* Fade In Animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-/* Delay for staggered animations */
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.4s; }
-.fade-in:nth-child(3) { animation-delay: 0.6s; }
-.fade-in:nth-child(4) { animation-delay: 0.8s; }
-.fade-in:nth-child(5) { animation-delay: 1.0s; }
-.fade-in:nth-child(6) { animation-delay: 1.2s; }
-
 /* Enhanced Responsive Design */
 @media (max-width: 768px) {
   body {
@@ -590,16 +610,16 @@ ul li {
 
   section {
       min-height: auto;
-      padding: 90px 10px; /* Increased top padding to account for taller nav */
+      padding: 90px 10px;
   }
 
   nav {
-      min-height: 60px; /* Set a taller height for the nav bar */
+      min-height: 60px;
   }
 
   .nav-container {
-      padding: 20px 0; /* Increased padding to make the nav taller */
-      min-height: 60px; /* Ensure the container matches the nav height */
+      padding: 20px 0;
+      min-height: 60px;
   }
 
   .hamburger {
@@ -608,12 +628,12 @@ ul li {
       left: 15px;
       top: 50%;
       transform: translateY(-50%);
-      width: 35px; /* Slightly larger hamburger icon for better visibility */
-      height: 25px; /* Adjusted height to fit the taller nav */
+      width: 35px;
+      height: 25px;
   }
 
   .hamburger span {
-      height: 4px; /* Thicker lines for better visibility */
+      height: 4px;
   }
 
   .nav-links {
@@ -651,11 +671,15 @@ ul li {
       font-size: 24px;
   }
 
+  h3 {
+      font-size: 16px;
+  }
+
   p, ul {
       font-size: 12px;
   }
 
-  .skills-grid, .certificates-grid, .projects-grid {
+  .skills-grid, .experience-grid, .certificates-grid, .projects-grid {
       grid-template-columns: 1fr;
       gap: 6px;
       padding: 6px;
@@ -729,7 +753,7 @@ ul li {
 
 @media (max-width: 480px) {
   section {
-      padding: 80px 8px; /* Adjusted for taller nav */
+      padding: 80px 8px;
   }
 
   nav {
@@ -749,13 +773,19 @@ ul li {
       font-size: 20px;
   }
 
+  h3 {
+      font-size: 14px;
+  }
+
   .skills-grid .card h3,
+  .experience-grid .card h3,
   .projects-grid .card h3,
   .profile-card h3 {
       font-size: 14px;
   }
 
   .skills-grid .card li,
+  .experience-grid .card li,
   .about-details ul li,
   .projects-grid .card p,
   .certificates-grid .card p {
@@ -779,7 +809,7 @@ ul li {
 
 @media (max-width: 360px) {
   section {
-      padding: 75px 6px; /* Adjusted for taller nav */
+      padding: 75px 6px;
   }
 
   nav {
@@ -807,6 +837,10 @@ ul li {
 
   h2 {
       font-size: 18px;
+  }
+
+  h3 {
+      font-size: 12px;
   }
 
   p, ul {
@@ -849,7 +883,7 @@ ul li {
 
 @media (max-width: 320px) {
   section {
-      padding: 70px 5px; /* Adjusted for taller nav */
+      padding: 70px 5px;
   }
 
   nav {
@@ -886,6 +920,10 @@ ul li {
 
   h2 {
       font-size: 16px;
+  }
+
+  h3 {
+      font-size: 11px;
   }
 
   p, ul {
@@ -925,7 +963,7 @@ ul li {
       padding: 3px 6px;
   }
 
-  .skills-grid, .certificates-grid, .projects-grid {
+  .skills-grid, .experience-grid, .certificates-grid, .projects-grid {
       gap: 4px;
       padding: 4px;
   }
@@ -933,7 +971,7 @@ ul li {
 
 @media (max-width: 300px) {
   section {
-      padding: 65px 4px; /* Adjusted for taller nav */
+      padding: 65px 4px;
   }
 
   nav {
@@ -970,6 +1008,10 @@ ul li {
 
   h2 {
       font-size: 14px;
+  }
+
+  h3 {
+      font-size: 10px;
   }
 
   p, ul {
@@ -1009,7 +1051,7 @@ ul li {
       padding: 2px 5px;
   }
 
-  .skills-grid, .certificates-grid, .projects-grid {
+  .skills-grid, .experience-grid, .certificates-grid, .projects-grid {
       gap: 3px;
       padding: 3px;
   }
