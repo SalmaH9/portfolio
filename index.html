@@ -3,261 +3,649 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salma Hussein Taha - Portfolio</title>
-    <link href="portfolio.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="portfolio.js"></script>
+    <meta name="description" content="Salma Hussein Taha - Full Stack Developer & Network Engineer. Building secure, scalable digital solutions with modern web technologies and enterprise networking expertise.">
+    <title>Salma Hussein Taha | Developer & Network Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-    <noscript>
-        <style>
-            .professional-reveal {
-                opacity: 1;
-                transform: none;
-                animation: none;
-            }
-            .typewriter {
-                border-right: none;
-                white-space: normal;
-                animation: none;
-                width: auto;
-            }
-            .skills-grid .card li:hover::after {
-                display: none;
-            }
-        </style>
-        <p style="color: #e2e8f0; text-align: center; padding: 20px;">
-            JavaScript is disabled. Please enable JavaScript to experience the full functionality of this portfolio, including animations and the particle background.
-        </p>
-    </noscript>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
 
-    <nav>
-        <div class="nav-container">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#home" class="nav-logo cursor-none" data-cursor="hover">
+                SHT<span class="text-[#D4AF37]">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link cursor-none" data-cursor="hover">Home</a>
+                <a href="#about" class="nav-link cursor-none" data-cursor="hover">About</a>
+                <a href="#experience" class="nav-link cursor-none" data-cursor="hover">Experience</a>
+                <a href="#skills" class="nav-link cursor-none" data-cursor="hover">Skills</a>
+                <a href="#projects" class="nav-link cursor-none" data-cursor="hover">Projects</a>
+                <a href="#certificates" class="nav-link cursor-none" data-cursor="hover">Certificates</a>
+                <a href="#contact" class="nav-link cursor-none" data-cursor="hover">Contact</a>
             </div>
-            <div class="nav-links">
-                <a href="#home"><span class="icon">🏠</span>Home</a>
-                <a href="#about"><span class="icon">ℹ️</span>About</a>
-                <a href="#experience"><span class="icon">💼</span>Experience</a>
-                <a href="#skills"><span class="icon">🛠️</span>Skills</a>
-                <a href="#projects"><span class="icon">📂</span>Projects</a>
-                <a href="#certificates"><span class="icon">🏆</span>Certificates</a>
-                <a href="#contact"><span class="icon">📧</span>Contact</a>
-            </div>
+            <button class="md:hidden text-white p-2" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#certificates" class="mobile-link">Certificates</a>
+            <a href="#contact" class="mobile-link">Contact</a>
         </div>
     </nav>
 
-    <section id="home">
-        <div id="particles-js"></div>
-        <div class="content">
-            <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="home-profile-image">
-            <h1 class="typewriter">Salma Hussein Taha</h1>
-            <p>Full Stack Web Developer | Mobile App Developer | Network Engineer</p>
-            <a href="Salma Hussein Taha (Resume).pdf" class="download-btn">Download Resume</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <!-- Animated Background Grid -->
+        <div class="hero-grid">
+            <div class="grid-line horizontal" style="top: 20%"></div>
+            <div class="grid-line horizontal" style="top: 40%"></div>
+            <div class="grid-line horizontal" style="top: 60%"></div>
+            <div class="grid-line horizontal" style="top: 80%"></div>
+            <div class="grid-line vertical" style="left: 20%"></div>
+            <div class="grid-line vertical" style="left: 40%"></div>
+            <div class="grid-line vertical" style="left: 60%"></div>
+            <div class="grid-line vertical" style="left: 80%"></div>
         </div>
-        <div class="scroll-down">Scroll Down ↓</div>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="profile-card">
-                <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="profile-image">
-                <h3>Salma Hussein Taha</h3>
-                <p><strong>University:</strong> Assiut International Technological University</p>
-                <p><strong>Degree:</strong> Bachelor of Information Technology</p>
-                <p><strong>Year:</strong> 2nd Year (2023–2027)</p>
+        
+        <!-- Floating Particles -->
+        <div class="particles-container" id="particles"></div>
+        
+        <!-- Gradient Orbs -->
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="hero-badge magnetic-btn cursor-none" data-cursor="hover">
+                <span class="badge-dot"></span>
+                <span>Available for opportunities</span>
             </div>
-            <div class="about-details">
-                <p>Dedicated second-year Information Technology student with hands-on experience in Full Stack Web Development, Mobile App Development, and Network Engineering. Proficient in developing web and mobile applications using HTML, CSS, JavaScript, Dart, SQLite, and Flutter, and designing secure networks with Cisco Packet Tracer, implementing protocols like RIP, OSPF, Site-to-Site VPN, DHCP, ACL, ZPF, VLANs, HSRP, LACP/EtherChannel, TACACS+ (AAA), NATing, and STP. Passionate about solving technical challenges and eager to contribute to innovative IT solutions.</p>
-                <p><strong>Education Highlights:</strong></p>
-                <ul>
-                    <li>Bachelor of Information Technology, Assiut International Technological University (2023–2027, 2nd Year)</li>
-                    <li>High School Graduate, Assiut International Technological University (2020–2023, Graduated with Distinction, Ranked 3rd in Major)</li>
-                    <li>Proficient in English (CEFR B2), currently pursuing CCNA and CCNP certifications</li>
-                </ul>
+            
+            <div class="hero-title-container">
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="title-line">Salma Hussein</span>
+                    <span class="title-line title-line-2">Taha</span>
+                </h1>
+                <div class="title-underline"></div>
             </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="experience-grid">
-            <div class="card">
-                <h3>Network Engineering Intern</h3>
-                <p><strong>Academic Group Project, Assiut International Technological University</strong> | Feb 2025 – Apr 2025</p>
-                <ul>
-                    <li>Architected and configured a secure bank network infrastructure using Cisco Packet Tracer, implementing VLANs (10-60), Site-to-Site VPN, HSRP, OSPF, LACP/EtherChannel, TACACS+ (AAA), DHCP, ZPF (OUTSIDE, INSIDE, DMZ), ACLs, NATing, and STP.</li>
-                    <li>Engineered high availability with HSRP and Site-to-Site VPN, achieving 99.9% network uptime.</li>
-                    <li>Enhanced security with TACACS+ for AAA authentication and ZPF, reducing unauthorized access risks by 40%.</li>
-                    <li>Improved bandwidth utilization by 25% using LACP/EtherChannel.</li>
-                </ul>
+            
+            <div class="hero-roles" id="heroRoles">
+                <span class="role active">Full Stack Developer</span>
+                <span class="role-separator">|</span>
+                <span class="role">Network Engineer</span>
+                <span class="role-separator">|</span>
+                <span class="role">Mobile Developer</span>
             </div>
-            <div class="card">
-                <h3>Web Development Intern</h3>
-                <p><strong>Academic Group Project, Assiut International Technological University</strong> | Jan 2025 – Mar 2025</p>
-                <ul>
-                    <li>Collaborated to develop a university website using HTML, CSS, JavaScript, Dart, and SQLite.</li>
-                    <li>Designed responsive UI components, ensuring accessibility and cross-device functionality.</li>
-                    <li>Enhanced user experience through feedback incorporation and teamwork.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Mobile App Developer</h3>
-                <p><strong>High School Graduation Project, Assiut International Technological University</strong> | Mar 2023 – Jun 2023</p>
-                <ul>
-                    <li>Developed a mobile application using Flutter and Dart, focusing on user-friendly interfaces.</li>
-                    <li>Addressed technical challenges, ensuring smooth performance across devices.</li>
-                    <li>Received positive feedback from instructors for the project presentation.</li>
-                </ul>
+            
+            <p class="hero-subtitle" id="heroSubtitle">
+                Crafting secure, scalable digital solutions with modern web technologies 
+                and enterprise networking expertise. Building the future, one line of code at a time.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="hero-btn hero-btn-primary magnetic-btn cursor-none" data-cursor="hover">
+                    <span>View My Work</span>
+                    <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#contact" class="hero-btn hero-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
+                    <span>Get In Touch</span>
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
             </div>
         </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="card languages">
-                <h3>Languages</h3>
-                <ul>
-                    <li data-tooltip="Proficient in semantic markup">HTML</li>
-                    <li data-tooltip="Skilled in responsive design">CSS</li>
-                    <li data-tooltip="Experienced in DOM manipulation">JavaScript</li>
-                    <li data-tooltip="Used in Flutter app development">Dart</li>
-                </ul>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator magnetic-btn cursor-none" data-cursor="hover" onclick="scrollToSection('about')">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
             </div>
-            <div class="card technologies">
-                <h3>Technologies</h3>
-                <ul>
-                    <li data-tooltip="Database for web projects">SQLite</li>
-                    <li data-tooltip="Framework for mobile apps">Flutter</li>
-                    <li data-tooltip="Network simulation tool">Cisco Packet Tracer</li>
-                    <li data-tooltip="Version control system">Git</li>
-                    <li data-tooltip="Code collaboration platform">GitHub</li>
-                </ul>
-            </div>
-            <div class="card network-protocols">
-                <h3>Network Protocols</h3>
-                <ul>
-                    <li data-tooltip="Routing Information Protocol">RIP</li>
-                    <li data-tooltip="Open Shortest Path First">OSPF</li>
-                    <li data-tooltip="Secure network connectivity">Site-to-Site VPN</li>
-                    <li data-tooltip="Dynamic Host Configuration Protocol">DHCP</li>
-                    <li data-tooltip="Access Control Lists">ACL</li>
-                    <li data-tooltip="Zone-Based Policy Firewall">ZPF</li>
-                    <li data-tooltip="Virtual Local Area Networks">VLANs</li>
-                    <li data-tooltip="Hot Standby Router Protocol">HSRP</li>
-                    <li data-tooltip="Link Aggregation Control Protocol">LACP/EtherChannel</li>
-                    <li data-tooltip="Authentication, Authorization, Accounting">TACACS+ (AAA)</li>
-                    <li data-tooltip="Network Address Translation">NATing</li>
-                    <li data-tooltip="Spanning Tree Protocol">STP</li>
-                </ul>
-            </div>
-            <div class="card concepts">
-                <h3>Concepts</h3>
-                <ul>
-                    <li data-tooltip="Securing digital systems">Cybersecurity</li>
-                    <li data-tooltip="Penetration testing skills">Ethical Hacking</li>
-                    <li data-tooltip="Designing network infrastructure">Network Engineering</li>
-                    <li data-tooltip="Building responsive websites">Web Development</li>
-                    <li data-tooltip="Internet of Things basics">IoT</li>
-                    <li data-tooltip="Data analysis fundamentals">Data Science</li>
-                </ul>
-            </div>
-            <div class="card soft-skills">
-                <h3>Soft Skills</h3>
-                <ul>
-                    <li data-tooltip="Addressing technical challenges">Problem Solving</li>
-                    <li data-tooltip="Effective team collaboration">Team Collaboration</li>
-                </ul>
-            </div>
-            <div class="card spoken-languages">
-                <h3>Languages (Spoken)</h3>
-                <ul>
-                    <li data-tooltip="Proficient communication">English (CEFR B1-B2)</li>
-                </ul>
-            </div>
+            <span class="scroll-text">Scroll to explore</span>
+        </div>
+        
+        <!-- Side Decorations -->
+        <div class="side-decoration left">
+            <div class="side-line"></div>
+            <span class="side-text">FULL STACK DEVELOPER</span>
+        </div>
+        <div class="side-decoration right">
+            <div class="side-line"></div>
+            <span class="side-text">NETWORK ENGINEER</span>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Selected Projects</h2>
-        <div class="projects-grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x150?text=Bank+Network+System" alt="Bank System Network" class="project-image">
-                <h3>Bank System Network</h3>
-                <p>Architected and configured a secure bank network using Cisco Packet Tracer, implementing VLANs (10-60), Site-to-Site VPN, HSRP, OSPF, LACP/EtherChannel, TACACS+ (AAA), DHCP, ZPF (OUTSIDE, INSIDE, DMZ), ACLs, NATing, and STP, achieving 99.9% uptime, 40% improved security, and 25% better bandwidth efficiency.</p>
-                <a href="https://github.com/placeholder/bank-network-system" class="github-btn">View on GitHub</a>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-header text-center">
+            <span class="section-label">About Me</span>
+            <h2 class="section-title">Passionate about <span>technology</span><br>and innovation</h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-image-container">
+                <div class="image-frame">
+                    <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="about-image">
+                </div>
+                <div class="experience-float">
+                    <span class="exp-number">3+</span>
+                    <span class="exp-text">Years<br>Experience</span>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x150?text=University+Website" alt="University Website" class="project-image">
-                <h3>University Website</h3>
-                <p>Collaborated on a university website using HTML, CSS, JavaScript, Dart, and SQLite, ensuring accessibility and cross-device compatibility.</p>
-                <a href="https://github.com/placeholder/university-website" class="github-btn">View on GitHub</a>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x150?text=Mobile+App" alt="Mobile Application" class="project-image">
-                <h3>Mobile Application</h3>
-                <p>Developed a mobile app using Flutter and Dart, focusing on user-friendly interfaces and smooth performance across devices.</p>
-                <a href="https://github.com/placeholder/mobile-app" class="github-btn">View on GitHub</a>
+            
+            <div class="about-content">
+                <p class="about-text">
+                    I'm a dedicated second-year Information Technology student at Assiut International Technological University, with hands-on experience spanning Full Stack Web Development, Mobile App Development, and Enterprise Network Engineering.
+                </p>
+                <p class="about-text">
+                    My expertise includes developing robust web and mobile applications using modern technologies like Flutter, Dart, and JavaScript, alongside designing secure network infrastructures with Cisco solutions.
+                </p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span>10+ Professional Certifications</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span>Enterprise Network Architecture</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span>Cross-Platform Mobile Development</span>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5">0</span>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10">0</span>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="99">0</span>
+                        <div class="stat-label">% Uptime Achieved</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="certificates">
-        <h2>Certifications</h2>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="section-header text-center">
+            <span class="section-label">Experience</span>
+            <h2 class="section-title">Professional <span>Journey</span></h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Feb 2025 – Apr 2025
+                    </div>
+                    <h3 class="timeline-title">Network Engineering Intern</h3>
+                    <div class="timeline-company">Academic Group Project, AITU</div>
+                    <p class="timeline-desc">
+                        Architected secure bank network infrastructure using Cisco Packet Tracer. Implemented VLANs, Site-to-Site VPN, HSRP, OSPF, and TACACS+ AAA.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Cisco</span>
+                        <span class="t-tag">OSPF</span>
+                        <span class="t-tag">VPN</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Jan 2025 – Mar 2025
+                    </div>
+                    <h3 class="timeline-title">Web Development Intern</h3>
+                    <div class="timeline-company">Academic Group Project, AITU</div>
+                    <p class="timeline-desc">
+                        Developed responsive university website using HTML, CSS, JavaScript, Dart, and SQLite. Focused on accessibility standards.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Full Stack</span>
+                        <span class="t-tag">SQLite</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Mar 2023 – Jun 2023
+                    </div>
+                    <h3 class="timeline-title">Mobile App Developer</h3>
+                    <div class="timeline-company">High School Graduation Project, AITU</div>
+                    <p class="timeline-desc">
+                        Built cross-platform mobile application using Flutter and Dart. Delivered intuitive UI/UX design with 95% positive feedback.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Flutter</span>
+                        <span class="t-tag">Dart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-header text-center">
+            <span class="section-label">Expertise</span>
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-card" data-tilt>
+                    <div class="skill-icon">
+                        <i data-lucide="code-2" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="skill-title">Languages</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-dot"></span>HTML5 & Semantic Markup</li>
+                        <li><span class="skill-dot"></span>CSS3, Flexbox & Grid</li>
+                        <li><span class="skill-dot"></span>JavaScript (ES6+)</li>
+                        <li><span class="skill-dot"></span>Dart & Flutter</li>
+                        <li><span class="skill-dot"></span>SQL & Database Design</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card" data-tilt>
+                    <div class="skill-icon">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="skill-title">Technologies</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-dot"></span>Flutter Framework</li>
+                        <li><span class="skill-dot"></span>SQLite & Firebase</li>
+                        <li><span class="skill-dot"></span>Git & GitHub</li>
+                        <li><span class="skill-dot"></span>RESTful APIs</li>
+                        <li><span class="skill-dot"></span>Responsive Design</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card" data-tilt>
+                    <div class="skill-icon">
+                        <i data-lucide="network" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="skill-title">Networking</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-dot"></span>Cisco Packet Tracer</li>
+                        <li><span class="skill-dot"></span>OSPF, RIP, EIGRP</li>
+                        <li><span class="skill-dot"></span>VLANs & Trunking</li>
+                        <li><span class="skill-dot"></span>VPN & Security</li>
+                        <li><span class="skill-dot"></span>HSRP & LACP</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card" data-tilt>
+                    <div class="skill-icon">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="skill-title">Cybersecurity</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-dot"></span>TACACS+ & AAA</li>
+                        <li><span class="skill-dot"></span>NAT & PAT</li>
+                        <li><span class="skill-dot"></span>Ethical Hacking</li>
+                        <li><span class="skill-dot"></span>Network Security</li>
+                        <li><span class="skill-dot"></span>Risk Assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-header text-center">
+            <span class="section-label">Portfolio</span>
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+        </div>
+        
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="Screenshot 2025-05-10 015642.png" alt="Bank Network System" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-view">
+                            <i data-lucide="eye" class="w-8 h-8"></i>
+                            <span>View Project</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Network Engineering</div>
+                    <h3 class="project-title">Enterprise Bank Network</h3>
+                    <p class="project-desc">
+                        Designed and implemented a secure, scalable bank network infrastructure supporting multiple branches with 99.9% uptime.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Cisco</span>
+                        <span class="project-tag">OSPF</span>
+                        <span class="project-tag">VPN</span>
+                        <span class="project-tag">HSRP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                            Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card reverse">
+                <div class="project-image-wrapper">
+                    <img src="university website4 .jpg.png" alt="University Website" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-view">
+                            <i data-lucide="eye" class="w-8 h-8"></i>
+                            <span>View Project</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Web Development</div>
+                    <h3 class="project-title">University Portal System</h3>
+                    <p class="project-desc">
+                        Full-stack university website with responsive design, student portal integration, and database management.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML5</span>
+                        <span class="project-tag">CSS3</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">SQLite</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="mobile app5.jpg" alt="Mobile Application" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-view">
+                            <i data-lucide="eye" class="w-8 h-8"></i>
+                            <span>View Project</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-category">Mobile Development</div>
+                    <h3 class="project-title">Cross-Platform Mobile App</h3>
+                    <p class="project-desc">
+                        Feature-rich mobile application built with Flutter framework delivering native performance on iOS and Android.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Flutter</span>
+                        <span class="project-tag">Dart</span>
+                        <span class="project-tag">Mobile UI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="section">
+        <div class="section-header text-center">
+            <span class="section-label">Credentials</span>
+            <h2 class="section-title">Certifications & <span>Achievements</span></h2>
+        </div>
+        
         <div class="certificates-grid">
-            <div class="card">
-                <p><strong>Learn HTML & CSS</strong> - Information Technology Institute (ITI), Jul 2024</p>
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Learn HTML & CSS</h3>
+                <div class="certificate-issuer">Information Technology Institute (ITI)</div>
+                <div class="certificate-date">Jul 2024</div>
             </div>
-            <div class="card">
-                <p><strong>Database Fundamentals</strong> - Information Technology Institute (ITI), Sep 2024</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="database" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Database Fundamentals</h3>
+                <div class="certificate-issuer">Information Technology Institute (ITI)</div>
+                <div class="certificate-date">Sep 2024</div>
             </div>
-            <div class="card">
-                <p><strong>Introduction to Cybersecurity</strong> - Cisco Networking Academy, Jan 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Introduction to Cybersecurity</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Jan 2025</div>
             </div>
-            <div class="card">
-                <p><strong>Network Technician Career Path</strong> - Cisco Networking Academy, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="network" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Network Technician Career Path</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>Junior Cybersecurity Analyst Career Path</strong> - Cisco Networking Academy, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Junior Cybersecurity Analyst</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>Ethical Hacker</strong> - Cisco Networking Academy, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="terminal" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Ethical Hacker</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>Introduction to Internet of Things</strong> - Cisco Networking Academy, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Introduction to IoT</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>Introduction to Data Science</strong> - Cisco Networking Academy, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Introduction to Data Science</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>English for IT 1</strong> - Cisco Networking Academy & OpenEDG, Feb 2025</p>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="languages" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">English for IT (CEFR B2)</h3>
+                <div class="certificate-issuer">Cisco & OpenEDG</div>
+                <div class="certificate-date">Feb 2025</div>
             </div>
-            <div class="card">
-                <p><strong>English for IT 2 (CEFR B2)</strong> - Cisco Networking Academy & OpenEDG, Feb 2025</p>
+            
+            <div class="certificate-card in-progress">
+                <div class="certificate-icon">
+                    <i data-lucide="router" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">CCNA Certification</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <span class="certificate-progress">In Progress</span>
             </div>
-            <div class="card">
-                <p><strong>Cisco Certified Network Associate (CCNA, In Progress)</strong> - Cisco Networking Academy</p>
-            </div>
-            <div class="card">
-                <p><strong>Cisco Certified Network Professional (CCNP, In Progress)</strong> - Cisco Networking Academy</p>
+            
+            <div class="certificate-card in-progress">
+                <div class="certificate-icon">
+                    <i data-lucide="server" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">CCNP Certification</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <span class="certificate-progress">In Progress</span>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <p>I'm excited to connect and explore opportunities in web development, mobile app development, and network engineering. Reach out to me via any of the methods below!</p>
-        <div class="contact-links">
-            <a href="mailto:ssth4276@gmail.com"><span class="icon">📧</span>Email</a>
-            <a href="https://linkedin.com/in/salma-hussein-a3b103356"><span class="icon">💼</span>LinkedIn</a>
-            <a href="tel:+201063083970"><span class="icon">📞</span>Phone</a>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <div class="contact-badge">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                <span>Let's Connect</span>
+            </div>
+            
+            <h2 class="contact-title">Ready to start a <span class="text-[#D4AF37]">project</span>?</h2>
+            <p class="contact-subtitle">
+                I'm currently available for freelance work and full-time opportunities. 
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            
+            <div class="contact-links">
+                <a href="mailto:ssth4276@gmail.com" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">ssth4276@gmail.com</span>
+                    </div>
+                </a>
+                
+                <a href="https://linkedin.com/in/salma-hussein-a3b103356" target="_blank" rel="noopener noreferrer" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Salma Hussein</span>
+                    </div>
+                </a>
+                
+                <a href="tel:+201063083970" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+20 106 308 3970</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="contact-cta">
+                <a href="Salma Hussein Taha (Resume).pdf" download class="resume-btn magnetic-btn cursor-none" data-cursor="hover">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span>Download Resume</span>
+                </a>
+            </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SHT.</div>
+            <p class="footer-text">
+                © <span id="year"></span> Salma Hussein Taha. All rights reserved.
+            </p>
+            <div class="footer-social">
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="GitHub">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="portfolio.js"></script>
 </body>
 </html>
