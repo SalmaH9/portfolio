@@ -19,9 +19,88 @@ function initApp() {
     initScrollAnimations();
     initMagneticButtons();
     initMobileMenu();
+    initLanguage();
     
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+}
+
+// Language Toggle
+let currentLang = localStorage.getItem('language') || 'en';
+
+function initLanguage() {
+    // Apply saved language
+    if (currentLang === 'ar') {
+        setLanguage('ar', false);
+    }
+    
+    // Update toggle button text
+    updateLangToggle();
+}
+
+function toggleLanguage() {
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    setLanguage(newLang, true);
+}
+
+function setLanguage(lang, animate) {
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    
+    const html = document.documentElement;
+    const body = document.body;
+    
+    if (lang === 'ar') {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        body.style.fontFamily = "'Cairo', 'Inter', sans-serif";
+    } else {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        body.style.fontFamily = "'Inter', sans-serif";
+    }
+    
+    // Update all translatable elements
+    const elements = document.querySelectorAll('[data-en][data-ar]');
+    elements.forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (animate) {
+            gsap.to(el, {
+                opacity: 0,
+                y: -10,
+                duration: 0.2,
+                onComplete: () => {
+                    el.textContent = text;
+                    gsap.to(el, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.2
+                    });
+                }
+            });
+        } else {
+            el.textContent = text;
+        }
+    });
+    
+    // Update toggle button
+    updateLangToggle();
+    
+    // Refresh ScrollTrigger to account for layout changes
+    ScrollTrigger.refresh();
+}
+
+function updateLangToggle() {
+    const toggle = document.querySelector('.lang-toggle .lang-current');
+    const mobileLangText = document.getElementById('mobileLangText');
+    
+    if (toggle) {
+        toggle.textContent = currentLang === 'en' ? 'EN' : 'AR';
+    }
+    
+    if (mobileLangText) {
+        mobileLangText.textContent = currentLang === 'en' ? 'العربية' : 'English';
+    }
 }
 
 // Custom Cursor
@@ -123,7 +202,9 @@ function initNavigation() {
 // Floating Particles
 function initParticles() {
     const container = document.getElementById('particles');
-    const particleCount = 30;
+    if (!container) return;
+    
+    const particleCount = window.matchMedia('(pointer: coarse)').matches ? 15 : 30;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -245,7 +326,7 @@ function initScrollAnimations() {
     // About section
     gsap.to('.about-image-container', {
         opacity: 1,
-        x: 0,
+        y: 0,
         duration: 1,
         scrollTrigger: {
             trigger: '.about-grid',
@@ -268,7 +349,7 @@ function initScrollAnimations() {
 
     gsap.to('.about-content', {
         opacity: 1,
-        x: 0,
+        y: 0,
         duration: 1,
         scrollTrigger: {
             trigger: '.about-grid',
@@ -314,7 +395,6 @@ function initScrollAnimations() {
         gsap.to(card, {
             opacity: 1,
             y: 0,
-            rotateX: 0,
             duration: 0.8,
             delay: i * 0.1,
             scrollTrigger: {
@@ -422,6 +502,8 @@ function initMagneticButtons() {
 function initMobileMenu() {
     const btn = document.getElementById('mobileMenuBtn');
     const menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    
     let isOpen = false;
 
     btn.addEventListener('click', () => {
@@ -468,4 +550,13 @@ document.addEventListener('visibilitychange', () => {
     } else {
         gsap.globalTimeline.resume();
     }
+});
+
+// Handle resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 250);
 });

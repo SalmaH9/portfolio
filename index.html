@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,20 +36,26 @@
     <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
+    <!-- Language Toggle -->
+    <div class="lang-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleLanguage()">
+        <span class="lang-current">EN</span>
+        <i data-lucide="globe" class="w-4 h-4"></i>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav-container" id="navbar">
-        <div class="flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex justify-between items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
             <a href="#home" class="nav-logo cursor-none" data-cursor="hover">
                 SHT<span class="text-[#D4AF37]">.</span>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="nav-link cursor-none" data-cursor="hover">Home</a>
-                <a href="#about" class="nav-link cursor-none" data-cursor="hover">About</a>
-                <a href="#experience" class="nav-link cursor-none" data-cursor="hover">Experience</a>
-                <a href="#skills" class="nav-link cursor-none" data-cursor="hover">Skills</a>
-                <a href="#projects" class="nav-link cursor-none" data-cursor="hover">Projects</a>
-                <a href="#certificates" class="nav-link cursor-none" data-cursor="hover">Certificates</a>
-                <a href="#contact" class="nav-link cursor-none" data-cursor="hover">Contact</a>
+                <a href="#home" class="nav-link cursor-none" data-cursor="hover" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="#about" class="nav-link cursor-none" data-cursor="hover" data-en="About" data-ar="عني">About</a>
+                <a href="#experience" class="nav-link cursor-none" data-cursor="hover" data-en="Experience" data-ar="الخبرة">Experience</a>
+                <a href="#skills" class="nav-link cursor-none" data-cursor="hover" data-en="Skills" data-ar="المهارات">Skills</a>
+                <a href="#projects" class="nav-link cursor-none" data-cursor="hover" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="#certificates" class="nav-link cursor-none" data-cursor="hover" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+                <a href="#contact" class="nav-link cursor-none" data-cursor="hover" data-en="Contact" data-ar="تواصل">Contact</a>
             </div>
             <button class="md:hidden text-white p-2" id="mobileMenuBtn" aria-label="Toggle menu">
                 <i data-lucide="menu" class="w-6 h-6"></i>
@@ -58,13 +64,16 @@
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <a href="#home" class="mobile-link">Home</a>
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#experience" class="mobile-link">Experience</a>
-            <a href="#skills" class="mobile-link">Skills</a>
-            <a href="#projects" class="mobile-link">Projects</a>
-            <a href="#certificates" class="mobile-link">Certificates</a>
-            <a href="#contact" class="mobile-link">Contact</a>
+            <a href="#home" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+            <a href="#about" class="mobile-link" data-en="About" data-ar="عني">About</a>
+            <a href="#experience" class="mobile-link" data-en="Experience" data-ar="الخبرة">Experience</a>
+            <a href="#skills" class="mobile-link" data-en="Skills" data-ar="المهارات">Skills</a>
+            <a href="#projects" class="mobile-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+            <a href="#certificates" class="mobile-link" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+            <a href="#contact" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+            <div class="mobile-lang-toggle" onclick="toggleLanguage()">
+                <span id="mobileLangText">العربية</span>
+            </div>
         </div>
     </nav>
 
@@ -94,7 +103,7 @@
         <div class="hero-content">
             <div class="hero-badge magnetic-btn cursor-none" data-cursor="hover">
                 <span class="badge-dot"></span>
-                <span>Available for opportunities</span>
+                <span data-en="Available for opportunities" data-ar="متاحة للفرص">Available for opportunities</span>
             </div>
             
             <div class="hero-title-container">
@@ -106,25 +115,24 @@
             </div>
             
             <div class="hero-roles" id="heroRoles">
-                <span class="role active">Full Stack Developer</span>
+                <span class="role active" data-en="Full Stack Developer" data-ar="مطورة Full Stack">Full Stack Developer</span>
                 <span class="role-separator">|</span>
-                <span class="role">Network Engineer</span>
+                <span class="role" data-en="Network Engineer" data-ar="مهندسة شبكات">Network Engineer</span>
                 <span class="role-separator">|</span>
-                <span class="role">Mobile Developer</span>
+                <span class="role" data-en="Mobile Developer" data-ar="مطورة تطبيقات">Mobile Developer</span>
             </div>
             
-            <p class="hero-subtitle" id="heroSubtitle">
-                Crafting secure, scalable digital solutions with modern web technologies 
-                and enterprise networking expertise. Building the future, one line of code at a time.
+            <p class="hero-subtitle" id="heroSubtitle" data-en="Crafting secure, scalable digital solutions with modern web technologies and enterprise networking expertise. Building the future, one line of code at a time." data-ar="أصنع حلولاً رقمية آمنة وقابلة للتطوير باستخدام تقنيات الويب الحديثة وخبرة شبكات المؤسسات. أبني المستقبل، سطراً بسطر.">
+                Crafting secure, scalable digital solutions with modern web technologies and enterprise networking expertise. Building the future, one line of code at a time.
             </p>
             
             <div class="hero-buttons">
                 <a href="#projects" class="hero-btn hero-btn-primary magnetic-btn cursor-none" data-cursor="hover">
-                    <span>View My Work</span>
+                    <span data-en="View My Work" data-ar="شاهد أعمالي">View My Work</span>
                     <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
                 </a>
                 <a href="#contact" class="hero-btn hero-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
-                    <span>Get In Touch</span>
+                    <span data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
                     <i data-lucide="mail" class="w-5 h-5"></i>
                 </a>
             </div>
@@ -135,25 +143,29 @@
             <div class="scroll-mouse">
                 <div class="scroll-wheel"></div>
             </div>
-            <span class="scroll-text">Scroll to explore</span>
+            <span class="scroll-text" data-en="Scroll to explore" data-ar="اسحب للأسفل">Scroll to explore</span>
         </div>
         
         <!-- Side Decorations -->
         <div class="side-decoration left">
             <div class="side-line"></div>
-            <span class="side-text">FULL STACK DEVELOPER</span>
+            <span class="side-text" data-en="FULL STACK DEVELOPER" data-ar="مطورة FULL STACK">FULL STACK DEVELOPER</span>
         </div>
         <div class="side-decoration right">
             <div class="side-line"></div>
-            <span class="side-text">NETWORK ENGINEER</span>
+            <span class="side-text" data-en="NETWORK ENGINEER" data-ar="مهندسة شبكات">NETWORK ENGINEER</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="section-header text-center">
-            <span class="section-label">About Me</span>
-            <h2 class="section-title">Passionate about <span>technology</span><br>and innovation</h2>
+            <span class="section-label" data-en="About Me" data-ar="عني">About Me</span>
+            <h2 class="section-title">
+                <span data-en="Passionate about" data-ar="شغوفة بـ">Passionate about</span>
+                <span data-en="technology" data-ar="التقنية">technology</span><br>
+                <span data-en="and innovation" data-ar="والابتكار">and innovation</span>
+            </h2>
         </div>
         
         <div class="about-grid">
@@ -163,45 +175,45 @@
                 </div>
                 <div class="experience-float">
                     <span class="exp-number">3+</span>
-                    <span class="exp-text">Years<br>Experience</span>
+                    <span class="exp-text" data-en="Years<br>Experience" data-ar="سنوات<br>خبرة">Years<br>Experience</span>
                 </div>
             </div>
             
             <div class="about-content">
-                <p class="about-text">
+                <p class="about-text" data-en="I'm a dedicated Third-year Information Technology student at Assiut International Technological University, with hands-on experience spanning Full Stack Web Development, Mobile App Development, and Enterprise Network Engineering." data-ar="أنا طالبة متفوقة في السنة الثالثة بتخصص تكنولوجيا المعلومات في جامعة أسيوط الدولية التكنولوجية، مع خبرة عملية في تطوير الويب الكامل، وتطوير تطبيقات الجوال، وهندسة شبكات المؤسسات.">
                     I'm a dedicated Third-year Information Technology student at Assiut International Technological University, with hands-on experience spanning Full Stack Web Development, Mobile App Development, and Enterprise Network Engineering.
                 </p>
-                <p class="about-text">
+                <p class="about-text" data-en="My expertise includes developing robust web and mobile applications using modern technologies like Flutter, Dart, and JavaScript, alongside designing secure network infrastructures with Cisco solutions." data-ar="تشمل خبرتي تطوير تطبيقات ويب وتطبيقات جوال قوية باستخدام تقنيات حديثة مثل Flutter وDart وJavaScript، إلى جانب تصميم بنية شبكات آمنة باستخدام حلول Cisco.">
                     My expertise includes developing robust web and mobile applications using modern technologies like Flutter, Dart, and JavaScript, alongside designing secure network infrastructures with Cisco solutions.
                 </p>
                 
                 <div class="about-highlights">
                     <div class="highlight-item">
                         <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
-                        <span>10+ Professional Certifications</span>
+                        <span data-en="10+ Professional Certifications" data-ar="+10 شهادات احترافية">10+ Professional Certifications</span>
                     </div>
                     <div class="highlight-item">
                         <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
-                        <span>Enterprise Network Architecture</span>
+                        <span data-en="Enterprise Network Architecture" data-ar="هندسة شبكات المؤسسات">Enterprise Network Architecture</span>
                     </div>
                     <div class="highlight-item">
                         <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
-                        <span>Cross-Platform Mobile Development</span>
+                        <span data-en="Cross-Platform Mobile Development" data-ar="تطوير تطبيقات متعددة المنصات">Cross-Platform Mobile Development</span>
                     </div>
                 </div>
                 
                 <div class="about-stats">
                     <div class="stat-item">
                         <span class="stat-number" data-count="5">0</span>
-                        <div class="stat-label">Projects Completed</div>
+                        <div class="stat-label" data-en="Projects Completed" data-ar="مشروع منجز">Projects Completed</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number" data-count="10">0</span>
-                        <div class="stat-label">Certifications</div>
+                        <div class="stat-label" data-en="Certifications" data-ar="شهادة">Certifications</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number" data-count="99">0</span>
-                        <div class="stat-label">% Uptime Achieved</div>
+                        <div class="stat-label" data-en="% Uptime Achieved" data-ar="% وقت تشغيل">% Uptime Achieved</div>
                     </div>
                 </div>
             </div>
@@ -211,8 +223,11 @@
     <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="section-header text-center">
-            <span class="section-label">Experience</span>
-            <h2 class="section-title">Professional <span>Journey</span></h2>
+            <span class="section-label" data-en="Experience" data-ar="الخبرة">Experience</span>
+            <h2 class="section-title">
+                <span data-en="Professional" data-ar="رحلتي">Professional</span>
+                <span data-en="Journey" data-ar="المهنية">Journey</span>
+            </h2>
         </div>
         
         <div class="timeline">
@@ -223,11 +238,11 @@
                 <div class="timeline-content">
                     <div class="timeline-date">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
-                        Feb 2025 – Apr 2025
+                        <span data-en="Feb 2025 – Apr 2025" data-ar="فبراير – أبريل 2025">Feb 2025 – Apr 2025</span>
                     </div>
-                    <h3 class="timeline-title">Network Engineering Intern</h3>
-                    <div class="timeline-company">Academic Group Project, AITU</div>
-                    <p class="timeline-desc">
+                    <h3 class="timeline-title" data-en="Network Engineering Intern" data-ar="متدربة هندسة شبكات">Network Engineering Intern</h3>
+                    <div class="timeline-company" data-en="Academic Group Project, AITU" data-ar="مشروع أكاديمي جماعي، AITU">Academic Group Project, AITU</div>
+                    <p class="timeline-desc" data-en="Architected secure bank network infrastructure using Cisco Packet Tracer. Implemented VLANs, Site-to-Site VPN, HSRP, OSPF, and TACACS+ AAA." data-ar="صممت بنية شبكة بنك آمنة باستخدام Cisco Packet Tracer. نفذت VLANs و Site-to-Site VPN و HSRP و OSPF و TACACS+ AAA.">
                         Architected secure bank network infrastructure using Cisco Packet Tracer. Implemented VLANs, Site-to-Site VPN, HSRP, OSPF, and TACACS+ AAA.
                     </p>
                     <div class="timeline-tags">
@@ -243,11 +258,11 @@
                 <div class="timeline-content">
                     <div class="timeline-date">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
-                        Jan 2025 – Mar 2025
+                        <span data-en="Jan 2025 – Mar 2025" data-ar="يناير – مارس 2025">Jan 2025 – Mar 2025</span>
                     </div>
-                    <h3 class="timeline-title">Web Development Intern</h3>
-                    <div class="timeline-company">Academic Group Project, AITU</div>
-                    <p class="timeline-desc">
+                    <h3 class="timeline-title" data-en="Web Development Intern" data-ar="متدربة تطوير ويب">Web Development Intern</h3>
+                    <div class="timeline-company" data-en="Academic Group Project, AITU" data-ar="مشروع أكاديمي جماعي، AITU">Academic Group Project, AITU</div>
+                    <p class="timeline-desc" data-en="Developed responsive university website using HTML, CSS, JavaScript, Dart, and SQLite. Focused on accessibility standards." data-ar="طورت موقع جامعة متجاوب باستخدام HTML وCSS وJavaScript وDart وSQLite. ركزت على معايير إمكانية الوصول.">
                         Developed responsive university website using HTML, CSS, JavaScript, Dart, and SQLite. Focused on accessibility standards.
                     </p>
                     <div class="timeline-tags">
@@ -262,11 +277,11 @@
                 <div class="timeline-content">
                     <div class="timeline-date">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
-                        Mar 2023 – Jun 2023
+                        <span data-en="Mar 2023 – Jun 2023" data-ar="مارس – يونيو 2023">Mar 2023 – Jun 2023</span>
                     </div>
-                    <h3 class="timeline-title">Mobile App Developer</h3>
-                    <div class="timeline-company">High School Graduation Project, AITU</div>
-                    <p class="timeline-desc">
+                    <h3 class="timeline-title" data-en="Mobile App Developer" data-ar="مطورة تطبيقات جوال">Mobile App Developer</h3>
+                    <div class="timeline-company" data-en="High School Graduation Project, AITU" data-ar="مشروع تخرج الثانوية، AITU">High School Graduation Project, AITU</div>
+                    <p class="timeline-desc" data-en="Built cross-platform mobile application using Flutter and Dart. Delivered intuitive UI/UX design with 95% positive feedback." data-ar="بنيت تطبيق جوال متعدد المنصات باستخدام Flutter وDart. قدمت تصميم UI/UX بديهي مع 95% تقييم إيجابي.">
                         Built cross-platform mobile application using Flutter and Dart. Delivered intuitive UI/UX design with 95% positive feedback.
                     </p>
                     <div class="timeline-tags">
@@ -281,8 +296,11 @@
     <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="section-header text-center">
-            <span class="section-label">Expertise</span>
-            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <span class="section-label" data-en="Expertise" data-ar="الخبرات">Expertise</span>
+            <h2 class="section-title">
+                <span data-en="Technical" data-ar="المهارات">Technical</span>
+                <span data-en="Skills" data-ar="التقنية">Skills</span>
+            </h2>
         </div>
         
         <div class="skills-container">
@@ -291,13 +309,13 @@
                     <div class="skill-icon">
                         <i data-lucide="code-2" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="skill-title">Languages</h3>
+                    <h3 class="skill-title" data-en="Languages" data-ar="اللغات">Languages</h3>
                     <ul class="skill-list">
-                        <li><span class="skill-dot"></span>HTML5 & Semantic Markup</li>
-                        <li><span class="skill-dot"></span>CSS3, Flexbox & Grid</li>
-                        <li><span class="skill-dot"></span>JavaScript (ES6+)</li>
-                        <li><span class="skill-dot"></span>Dart & Flutter</li>
-                        <li><span class="skill-dot"></span>SQL & Database Design</li>
+                        <li><span class="skill-dot"></span><span data-en="HTML5 & Semantic Markup" data-ar="HTML5 والترميز الدلالي">HTML5 & Semantic Markup</span></li>
+                        <li><span class="skill-dot"></span><span data-en="CSS3, Flexbox & Grid" data-ar="CSS3 وFlexbox وGrid">CSS3, Flexbox & Grid</span></li>
+                        <li><span class="skill-dot"></span><span data-en="JavaScript (ES6+)" data-ar="JavaScript (ES6+)">JavaScript (ES6+)</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Dart & Flutter" data-ar="Dart وFlutter">Dart & Flutter</span></li>
+                        <li><span class="skill-dot"></span><span data-en="SQL & Database Design" data-ar="SQL وتصميم قواعد البيانات">SQL & Database Design</span></li>
                     </ul>
                 </div>
                 
@@ -305,13 +323,13 @@
                     <div class="skill-icon">
                         <i data-lucide="smartphone" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="skill-title">Technologies</h3>
+                    <h3 class="skill-title" data-en="Technologies" data-ar="التقنيات">Technologies</h3>
                     <ul class="skill-list">
-                        <li><span class="skill-dot"></span>Flutter Framework</li>
-                        <li><span class="skill-dot"></span>SQLite & Firebase</li>
-                        <li><span class="skill-dot"></span>Git & GitHub</li>
-                        <li><span class="skill-dot"></span>RESTful APIs</li>
-                        <li><span class="skill-dot"></span>Responsive Design</li>
+                        <li><span class="skill-dot"></span><span data-en="Flutter Framework" data-ar="إطار Flutter">Flutter Framework</span></li>
+                        <li><span class="skill-dot"></span><span data-en="SQLite & Firebase" data-ar="SQLite وFirebase">SQLite & Firebase</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Git & GitHub" data-ar="Git وGitHub">Git & GitHub</span></li>
+                        <li><span class="skill-dot"></span><span data-en="RESTful APIs" data-ar="RESTful APIs">RESTful APIs</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Responsive Design" data-ar="التصميم المتجاوب">Responsive Design</span></li>
                     </ul>
                 </div>
                 
@@ -319,13 +337,13 @@
                     <div class="skill-icon">
                         <i data-lucide="network" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="skill-title">Networking</h3>
+                    <h3 class="skill-title" data-en="Networking" data-ar="الشبكات">Networking</h3>
                     <ul class="skill-list">
-                        <li><span class="skill-dot"></span>Cisco Packet Tracer</li>
-                        <li><span class="skill-dot"></span>OSPF, RIP, EIGRP</li>
-                        <li><span class="skill-dot"></span>VLANs & Trunking</li>
-                        <li><span class="skill-dot"></span>VPN & Security</li>
-                        <li><span class="skill-dot"></span>HSRP & LACP</li>
+                        <li><span class="skill-dot"></span><span data-en="Cisco Packet Tracer" data-ar="Cisco Packet Tracer">Cisco Packet Tracer</span></li>
+                        <li><span class="skill-dot"></span><span data-en="OSPF, RIP, EIGRP" data-ar="OSPF وRIP وEIGRP">OSPF, RIP, EIGRP</span></li>
+                        <li><span class="skill-dot"></span><span data-en="VLANs & Trunking" data-ar="VLANs والربط">VLANs & Trunking</span></li>
+                        <li><span class="skill-dot"></span><span data-en="VPN & Security" data-ar="VPN والأمان">VPN & Security</span></li>
+                        <li><span class="skill-dot"></span><span data-en="HSRP & LACP" data-ar="HSRP وLACP">HSRP & LACP</span></li>
                     </ul>
                 </div>
                 
@@ -333,13 +351,13 @@
                     <div class="skill-icon">
                         <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="skill-title">Cybersecurity</h3>
+                    <h3 class="skill-title" data-en="Cybersecurity" data-ar="الأمن السيبراني">Cybersecurity</h3>
                     <ul class="skill-list">
-                        <li><span class="skill-dot"></span>TACACS+ & AAA</li>
-                        <li><span class="skill-dot"></span>NAT & PAT</li>
-                        <li><span class="skill-dot"></span>Ethical Hacking</li>
-                        <li><span class="skill-dot"></span>Network Security</li>
-                        <li><span class="skill-dot"></span>Risk Assessment</li>
+                        <li><span class="skill-dot"></span><span data-en="TACACS+ & AAA" data-ar="TACACS+ وAAA">TACACS+ & AAA</span></li>
+                        <li><span class="skill-dot"></span><span data-en="NAT & PAT" data-ar="NAT وPAT">NAT & PAT</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Ethical Hacking" data-ar="الاختراق الأخلاقي">Ethical Hacking</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Network Security" data-ar="أمان الشبكات">Network Security</span></li>
+                        <li><span class="skill-dot"></span><span data-en="Risk Assessment" data-ar="تقييم المخاطر">Risk Assessment</span></li>
                     </ul>
                 </div>
             </div>
@@ -349,8 +367,11 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="section-header text-center">
-            <span class="section-label">Portfolio</span>
-            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <span class="section-label" data-en="Portfolio" data-ar="المحفظة">Portfolio</span>
+            <h2 class="section-title">
+                <span data-en="Featured" data-ar="المشاريع">Featured</span>
+                <span data-en="Projects" data-ar="المميزة">Projects</span>
+            </h2>
         </div>
         
         <div class="projects-container">
@@ -360,14 +381,14 @@
                     <div class="project-overlay">
                         <div class="project-view">
                             <i data-lucide="eye" class="w-8 h-8"></i>
-                            <span>View Project</span>
+                            <span data-en="View Project" data-ar="عرض المشروع">View Project</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <div class="project-category">Network Engineering</div>
-                    <h3 class="project-title">Enterprise Bank Network</h3>
-                    <p class="project-desc">
+                    <div class="project-category" data-en="Network Engineering" data-ar="هندسة الشبكات">Network Engineering</div>
+                    <h3 class="project-title" data-en="Enterprise Bank Network" data-ar="شبكة بنك المؤسسات">Enterprise Bank Network</h3>
+                    <p class="project-desc" data-en="Designed and implemented a secure, scalable bank network infrastructure supporting multiple branches with 99.9% uptime." data-ar="صممت ونفذت بنية شبكة بنك آمنة وقابلة للتطوير تدعم فروع متعددة مع 99.9% وقت تشغيل.">
                         Designed and implemented a secure, scalable bank network infrastructure supporting multiple branches with 99.9% uptime.
                     </p>
                     <div class="project-tags">
@@ -379,11 +400,11 @@
                     <div class="project-links">
                         <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="github" class="w-4 h-4"></i>
-                            View Code
+                            <span data-en="View Code" data-ar="عرض الكود">View Code</span>
                         </a>
                         <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="file-text" class="w-4 h-4"></i>
-                            Docs
+                            <span data-en="Docs" data-ar="التوثيق">Docs</span>
                         </a>
                     </div>
                 </div>
@@ -395,14 +416,14 @@
                     <div class="project-overlay">
                         <div class="project-view">
                             <i data-lucide="eye" class="w-8 h-8"></i>
-                            <span>View Project</span>
+                            <span data-en="View Project" data-ar="عرض المشروع">View Project</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <div class="project-category">Web Development</div>
-                    <h3 class="project-title">University Portal System</h3>
-                    <p class="project-desc">
+                    <div class="project-category" data-en="Web Development" data-ar="تطوير الويب">Web Development</div>
+                    <h3 class="project-title" data-en="University Portal System" data-ar="نظام بوابة الجامعة">University Portal System</h3>
+                    <p class="project-desc" data-en="Full-stack university website with responsive design, student portal integration, and database management." data-ar="موقع جامعة كامل مع تصميم متجاوب، تكامل بوابة الطلاب، وإدارة قاعدة البيانات.">
                         Full-stack university website with responsive design, student portal integration, and database management.
                     </p>
                     <div class="project-tags">
@@ -414,11 +435,11 @@
                     <div class="project-links">
                         <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="github" class="w-4 h-4"></i>
-                            View Code
+                            <span data-en="View Code" data-ar="عرض الكود">View Code</span>
                         </a>
                         <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="external-link" class="w-4 h-4"></i>
-                            Live Demo
+                            <span data-en="Live Demo" data-ar="عرض مباشر">Live Demo</span>
                         </a>
                     </div>
                 </div>
@@ -430,14 +451,14 @@
                     <div class="project-overlay">
                         <div class="project-view">
                             <i data-lucide="eye" class="w-8 h-8"></i>
-                            <span>View Project</span>
+                            <span data-en="View Project" data-ar="عرض المشروع">View Project</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <div class="project-category">Mobile Development</div>
-                    <h3 class="project-title">Cross-Platform Mobile App</h3>
-                    <p class="project-desc">
+                    <div class="project-category" data-en="Mobile Development" data-ar="تطوير الجوال">Mobile Development</div>
+                    <h3 class="project-title" data-en="Cross-Platform Mobile App" data-ar="تطبيق متعدد المنصات">Cross-Platform Mobile App</h3>
+                    <p class="project-desc" data-en="Feature-rich mobile application built with Flutter framework delivering native performance on iOS and Android." data-ar="تطبيق جوال غني بالميزات مبني بإطار Flutter يقدم أداءً أصلياً على iOS وAndroid.">
                         Feature-rich mobile application built with Flutter framework delivering native performance on iOS and Android.
                     </p>
                     <div class="project-tags">
@@ -448,11 +469,11 @@
                     <div class="project-links">
                         <a href="#" class="project-btn project-btn-primary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="github" class="w-4 h-4"></i>
-                            View Code
+                            <span data-en="View Code" data-ar="عرض الكود">View Code</span>
                         </a>
                         <a href="#" class="project-btn project-btn-secondary magnetic-btn cursor-none" data-cursor="hover">
                             <i data-lucide="download" class="w-4 h-4"></i>
-                            Download
+                            <span data-en="Download" data-ar="تحميل">Download</span>
                         </a>
                     </div>
                 </div>
@@ -463,8 +484,11 @@
     <!-- Certificates Section -->
     <section id="certificates" class="section">
         <div class="section-header text-center">
-            <span class="section-label">Credentials</span>
-            <h2 class="section-title">Certifications & <span>Achievements</span></h2>
+            <span class="section-label" data-en="Credentials" data-ar="الاعتمادات">Credentials</span>
+            <h2 class="section-title">
+                <span data-en="Certifications &" data-ar="الشهادات">Certifications &</span>
+                <span data-en="Achievements" data-ar="والإنجازات">Achievements</span>
+            </h2>
         </div>
         
         <div class="certificates-grid">
@@ -472,45 +496,45 @@
                 <div class="certificate-icon">
                     <i data-lucide="award" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Learn HTML & CSS</h3>
+                <h3 class="certificate-title" data-en="Learn HTML & CSS" data-ar="تعلم HTML وCSS">Learn HTML & CSS</h3>
                 <div class="certificate-issuer">Information Technology Institute (ITI)</div>
-                <div class="certificate-date">Jul 2024</div>
+                <div class="certificate-date" data-en="Jul 2024" data-ar="يوليو 2024">Jul 2024</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="database" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Database Fundamentals</h3>
+                <h3 class="certificate-title" data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h3>
                 <div class="certificate-issuer">Information Technology Institute (ITI)</div>
-                <div class="certificate-date">Sep 2024</div>
+                <div class="certificate-date" data-en="Sep 2024" data-ar="سبتمبر 2024">Sep 2024</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="shield-check" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Introduction to Cybersecurity</h3>
+                <h3 class="certificate-title" data-en="Introduction to Cybersecurity" data-ar="مقدمة في الأمن السيبراني">Introduction to Cybersecurity</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Jan 2025</div>
+                <div class="certificate-date" data-en="Jan 2025" data-ar="يناير 2025">Jan 2025</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="network" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Network Technician Career Path</h3>
+                <h3 class="certificate-title" data-en="Network Technician Career Path" data-ar="مسار فني الشبكات">Network Technician Career Path</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="lock" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Junior Cybersecurity Analyst</h3>
+                <h3 class="certificate-title" data-en="Junior Cybersecurity Analyst" data-ar="محلل أمن سيبراني مبتدئ">Junior Cybersecurity Analyst</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card">
@@ -519,34 +543,34 @@
                 </div>
                 <h3 class="certificate-title">Ethical Hacker</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="cpu" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Introduction to IoT</h3>
+                <h3 class="certificate-title" data-en="Introduction to IoT" data-ar="مقدمة في إنترنت الأشياء">Introduction to IoT</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">Introduction to Data Science</h3>
+                <h3 class="certificate-title" data-en="Introduction to Data Science" data-ar="مقدمة في علم البيانات">Introduction to Data Science</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card">
                 <div class="certificate-icon">
                     <i data-lucide="languages" class="w-6 h-6"></i>
                 </div>
-                <h3 class="certificate-title">English for IT (CEFR B2)</h3>
+                <h3 class="certificate-title" data-en="English for IT (CEFR B2)" data-ar="الإنجليزية لتقنية المعلومات (CEFR B2)">English for IT (CEFR B2)</h3>
                 <div class="certificate-issuer">Cisco & OpenEDG</div>
-                <div class="certificate-date">Feb 2025</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
             </div>
             
             <div class="certificate-card in-progress">
@@ -555,7 +579,7 @@
                 </div>
                 <h3 class="certificate-title">CCNA Certification</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <span class="certificate-progress">In Progress</span>
+                <span class="certificate-progress" data-en="In Progress" data-ar="قيد التنفيذ">In Progress</span>
             </div>
             
             <div class="certificate-card in-progress">
@@ -564,7 +588,7 @@
                 </div>
                 <h3 class="certificate-title">CCNP Certification</h3>
                 <div class="certificate-issuer">Cisco Networking Academy</div>
-                <span class="certificate-progress">In Progress</span>
+                <span class="certificate-progress" data-en="In Progress" data-ar="قيد التنفيذ">In Progress</span>
             </div>
         </div>
     </section>
@@ -574,13 +598,15 @@
         <div class="contact-container">
             <div class="contact-badge">
                 <i data-lucide="send" class="w-5 h-5"></i>
-                <span>Let's Connect</span>
+                <span data-en="Let's Connect" data-ar="لنتواصل">Let's Connect</span>
             </div>
             
-            <h2 class="contact-title">Ready to start a <span class="text-[#D4AF37]">project</span>?</h2>
-            <p class="contact-subtitle">
-                I'm currently available for freelance work and full-time opportunities. 
-                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            <h2 class="contact-title">
+                <span data-en="Ready to start a" data-ar="مستعدة لبدء">Ready to start a</span>
+                <span class="text-[#D4AF37]" data-en="project" data-ar="مشروع">project</span>?
+            </h2>
+            <p class="contact-subtitle" data-en="I'm currently available for freelance work and full-time opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!" data-ar="أنا متاحة حالياً للعمل الحر والفرصة بدوام كامل. سواء كان لديك سؤال أو تريد فقط أن تقول مرحباً، سأبذل قصارى جهدي للرد عليك!">
+                I'm currently available for freelance work and full-time opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
             
             <div class="contact-links">
@@ -589,7 +615,7 @@
                         <i data-lucide="mail" class="w-6 h-6"></i>
                     </div>
                     <div class="contact-info">
-                        <span class="contact-label">Email</span>
+                        <span class="contact-label" data-en="Email" data-ar="البريد">Email</span>
                         <span class="contact-value">ssth4276@gmail.com</span>
                     </div>
                 </a>
@@ -609,7 +635,7 @@
                         <i data-lucide="phone" class="w-6 h-6"></i>
                     </div>
                     <div class="contact-info">
-                        <span class="contact-label">Phone</span>
+                        <span class="contact-label" data-en="Phone" data-ar="الهاتف">Phone</span>
                         <span class="contact-value">+20 106 308 3970</span>
                     </div>
                 </a>
@@ -618,7 +644,7 @@
             <div class="contact-cta">
                 <a href="Salma Hussein Taha RESUME.pdf" download class="resume-btn magnetic-btn cursor-none" data-cursor="hover">
                     <i data-lucide="download" class="w-5 h-5"></i>
-                    <span>Download Resume</span>
+                    <span data-en="Download Resume" data-ar="تحميل السيرة الذاتية">Download Resume</span>
                 </a>
             </div>
         </div>
@@ -629,7 +655,7 @@
         <div class="footer-content">
             <div class="footer-logo">SHT.</div>
             <p class="footer-text">
-                © <span id="year"></span> Salma Hussein Taha. All rights reserved.
+                © <span id="year"></span> <span data-en="Salma Hussein Taha. All rights reserved." data-ar="سلمى حسين طه. جميع الحقوق محفوظة.">Salma Hussein Taha. All rights reserved.</span>
             </p>
             <div class="footer-social">
                 <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="GitHub">
