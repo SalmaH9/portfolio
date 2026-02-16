@@ -113,7 +113,7 @@ html[dir="rtl"] .progress-bar {
    LANGUAGE TOGGLE - FIXED FOR MOBILE
    ============================================ */
 
-/* Language Toggle - Desktop Default */
+/* Default - Desktop */
 .lang-toggle {
     position: fixed;
     top: 1.5rem;
@@ -149,39 +149,68 @@ html[dir="rtl"] .lang-toggle {
     font-size: 0.85rem;
 }
 
-/* MOBILE FIX: Position translate button to avoid overlap with nav */
+
+/* MOBILE: Position translate beside hamburger menu */
 @media (max-width: 767px) {
     .lang-toggle {
-        /* Move to top-left on mobile (LTR) */
+        /* Position it beside the hamburger (which is at right in LTR) */
         top: 1.2rem;
-        left: 1rem;
-        right: auto;
-        padding: 0.4rem 0.875rem;
-        font-size: 0.85rem;
+        right: 3.5rem;  /* Move left to be beside hamburger (~2.5rem for hamburger + 1rem gap) */
+        left: auto;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
         z-index: 10003;
     }
     
-    /* RTL Mobile: Keep on top-right */
+    /* RTL: hamburger is on left, so translate goes beside it on left */
     html[dir="rtl"] .lang-toggle {
-        right: 1rem;
-        left: auto;
+        right: auto;
+        left: 3.5rem;
     }
     
-    /* Ensure nav button stays on opposite side */
+    /* Ensure proper spacing */
     #mobileMenuBtn {
         position: relative;
         z-index: 10002;
-        margin-left: auto;
+        padding: 0.5rem;
+        margin-right: -0.5rem;  /* Pull slightly to edge */
     }
     
     html[dir="rtl"] #mobileMenuBtn {
-        margin-left: 0;
-        margin-right: auto;
+        margin-right: 0;
+        margin-left: -0.5rem;
+    }
+    
+    /* SHT logo positioning */
+    .nav-logo {
+        font-size: 1.25rem;
+        z-index: 10002;
     }
 }
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
+/* Small phones - adjust spacing */
+@media (max-width: 380px) {
+    .lang-toggle {
+        right: 3.2rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    html[dir="rtl"] .lang-toggle {
+        left: 3.2rem;
+    }
+    
+    .lang-current {
+        font-size: 0.75rem;
+    }
+    
+    #mobileMenuBtn {
+        padding: 0.4rem;
+    }
+}
+
+/* Tablet and up - back to corner */
+@media (min-width: 768px) {
     .lang-toggle {
         top: 1.5rem;
         right: 1.5rem;
