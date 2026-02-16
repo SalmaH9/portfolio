@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience - Salma Hussein Taha">
+    <title>Experience | Salma Hussein Taha</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i data-lucide="sun" class="w-5 h-5 theme-icon-light"></i>
+        <i data-lucide="moon" class="w-5 h-5 theme-icon-dark hidden"></i>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleLanguage()">
+        <span class="lang-current">EN</span>
+        <i data-lucide="globe" class="w-4 h-4"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container visible" id="navbar">
+        <div class="flex justify-between items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="nav-logo cursor-none" data-cursor="hover">
+                SHT<span class="text-[#D4AF37]">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link cursor-none" data-cursor="hover" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="about.html" class="nav-link cursor-none" data-cursor="hover" data-en="About" data-ar="عني">About</a>
+                <a href="experience.html" class="nav-link active cursor-none" data-cursor="hover" data-en="Experience" data-ar="الخبرة">Experience</a>
+                <a href="skills.html" class="nav-link cursor-none" data-cursor="hover" data-en="Skills" data-ar="المهارات">Skills</a>
+                <a href="projects.html" class="nav-link cursor-none" data-cursor="hover" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="certificates.html" class="nav-link cursor-none" data-cursor="hover" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+                <a href="contact.html" class="nav-link cursor-none" data-cursor="hover" data-en="Contact" data-ar="تواصل">Contact</a>
+            </div>
+            <button class="md:hidden text-[var(--text-primary)] p-2" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+            <a href="about.html" class="mobile-link" data-en="About" data-ar="عني">About</a>
+            <a href="experience.html" class="mobile-link active" data-en="Experience" data-ar="الخبرة">Experience</a>
+            <a href="skills.html" class="mobile-link" data-en="Skills" data-ar="المهارات">Skills</a>
+            <a href="projects.html" class="mobile-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+            <a href="certificates.html" class="mobile-link" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+            <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+            <div class="mobile-lang-toggle" onclick="toggleLanguage()">
+                <span id="mobileLangText">العربية</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Experience Section -->
+    <section class="page-section experience-page">
+        <div class="section-header text-center">
+            <span class="section-label" data-en="Experience" data-ar="الخبرة">Experience</span>
+            <h2 class="section-title">
+                <span data-en="Professional" data-ar="رحلتي">Professional</span>
+                <span data-en="Journey" data-ar="المهنية">Journey</span>
+            </h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span data-en="Feb 2025 – Apr 2025" data-ar="فبراير – أبريل 2025">Feb 2025 – Apr 2025</span>
+                    </div>
+                    <h3 class="timeline-title" data-en="Network Engineering Intern" data-ar="متدربة هندسة شبكات">Network Engineering Intern</h3>
+                    <div class="timeline-company" data-en="Academic Group Project, AITU" data-ar="مشروع أكاديمي جماعي، AITU">Academic Group Project, AITU</div>
+                    <p class="timeline-desc" data-en="Architected secure bank network infrastructure using Cisco Packet Tracer. Implemented VLANs, Site-to-Site VPN, HSRP, OSPF, and TACACS+ AAA." data-ar="صممت بنية شبكة بنك آمنة باستخدام Cisco Packet Tracer. نفذت VLANs و Site-to-Site VPN و HSRP و OSPF و TACACS+ AAA.">
+                        Architected secure bank network infrastructure using Cisco Packet Tracer. Implemented VLANs, Site-to-Site VPN, HSRP, OSPF, and TACACS+ AAA.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Cisco</span>
+                        <span class="t-tag">OSPF</span>
+                        <span class="t-tag">VPN</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span data-en="Jan 2025 – Mar 2025" data-ar="يناير – مارس 2025">Jan 2025 – Mar 2025</span>
+                    </div>
+                    <h3 class="timeline-title" data-en="Web Development Intern" data-ar="متدربة تطوير ويب">Web Development Intern</h3>
+                    <div class="timeline-company" data-en="Academic Group Project, AITU" data-ar="مشروع أكاديمي جماعي، AITU">Academic Group Project, AITU</div>
+                    <p class="timeline-desc" data-en="Developed responsive university website using HTML, CSS, JavaScript, Dart, and SQLite. Focused on accessibility standards." data-ar="طورت موقع جامعة متجاوب باستخدام HTML وCSS وJavaScript وDart وSQLite. ركزت على معايير إمكانية الوصول.">
+                        Developed responsive university website using HTML, CSS, JavaScript, Dart, and SQLite. Focused on accessibility standards.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Full Stack</span>
+                        <span class="t-tag">SQLite</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span data-en="Mar 2023 – Jun 2023" data-ar="مارس – يونيو 2023">Mar 2023 – Jun 2023</span>
+                    </div>
+                    <h3 class="timeline-title" data-en="Mobile App Developer" data-ar="مطورة تطبيقات جوال">Mobile App Developer</h3>
+                    <div class="timeline-company" data-en="High School Graduation Project, AITU" data-ar="مشروع تخرج الثانوية، AITU">High School Graduation Project, AITU</div>
+                    <p class="timeline-desc" data-en="Built cross-platform mobile application using Flutter and Dart. Delivered intuitive UI/UX design with 95% positive feedback." data-ar="بنيت تطبيق جوال متعدد المنصات باستخدام Flutter وDart. قدمت تصميم UI/UX بديهي مع 95% تقييم إيجابي.">
+                        Built cross-platform mobile application using Flutter and Dart. Delivered intuitive UI/UX design with 95% positive feedback.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="t-tag">Flutter</span>
+                        <span class="t-tag">Dart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <div class="page-nav">
+        <a href="about.html" class="page-nav-prev magnetic-btn cursor-none" data-cursor="hover">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span data-en="About" data-ar="عني">About</span>
+        </a>
+        <a href="skills.html" class="page-nav-next magnetic-btn cursor-none" data-cursor="hover">
+            <span data-en="Skills" data-ar="المهارات">Skills</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+    </div>
+
+    <!-- Page Navigation Dots -->
+    <div class="page-nav-dots">
+        <a href="index.html" class="dot" aria-label="Home"></a>
+        <a href="about.html" class="dot" aria-label="About"></a>
+        <a href="experience.html" class="dot active" aria-label="Experience"></a>
+        <a href="skills.html" class="dot" aria-label="Skills"></a>
+        <a href="projects.html" class="dot" aria-label="Projects"></a>
+        <a href="certificates.html" class="dot" aria-label="Certificates"></a>
+        <a href="contact.html" class="dot" aria-label="Contact"></a>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

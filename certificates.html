@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Certificates - Salma Hussein Taha">
+    <title>Certificates | Salma Hussein Taha</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i data-lucide="sun" class="w-5 h-5 theme-icon-light"></i>
+        <i data-lucide="moon" class="w-5 h-5 theme-icon-dark hidden"></i>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleLanguage()">
+        <span class="lang-current">EN</span>
+        <i data-lucide="globe" class="w-4 h-4"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container visible" id="navbar">
+        <div class="flex justify-between items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="nav-logo cursor-none" data-cursor="hover">
+                SHT<span class="text-[#D4AF37]">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link cursor-none" data-cursor="hover" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="about.html" class="nav-link cursor-none" data-cursor="hover" data-en="About" data-ar="عني">About</a>
+                <a href="experience.html" class="nav-link cursor-none" data-cursor="hover" data-en="Experience" data-ar="الخبرة">Experience</a>
+                <a href="skills.html" class="nav-link cursor-none" data-cursor="hover" data-en="Skills" data-ar="المهارات">Skills</a>
+                <a href="projects.html" class="nav-link cursor-none" data-cursor="hover" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="certificates.html" class="nav-link active cursor-none" data-cursor="hover" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+                <a href="contact.html" class="nav-link cursor-none" data-cursor="hover" data-en="Contact" data-ar="تواصل">Contact</a>
+            </div>
+            <button class="md:hidden text-[var(--text-primary)] p-2" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+            <a href="about.html" class="mobile-link" data-en="About" data-ar="عني">About</a>
+            <a href="experience.html" class="mobile-link" data-en="Experience" data-ar="الخبرة">Experience</a>
+            <a href="skills.html" class="mobile-link" data-en="Skills" data-ar="المهارات">Skills</a>
+            <a href="projects.html" class="mobile-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+            <a href="certificates.html" class="mobile-link active" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+            <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+            <div class="mobile-lang-toggle" onclick="toggleLanguage()">
+                <span id="mobileLangText">العربية</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Certificates Section -->
+    <section class="page-section certificates-page">
+        <div class="section-header text-center">
+            <span class="section-label" data-en="Credentials" data-ar="الاعتمادات">Credentials</span>
+            <h2 class="section-title">
+                <span data-en="Certifications &" data-ar="الشهادات">Certifications &</span>
+                <span data-en="Achievements" data-ar="والإنجازات">Achievements</span>
+            </h2>
+        </div>
+        
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Learn HTML & CSS" data-ar="تعلم HTML وCSS">Learn HTML & CSS</h3>
+                <div class="certificate-issuer">Information Technology Institute (ITI)</div>
+                <div class="certificate-date" data-en="Jul 2024" data-ar="يوليو 2024">Jul 2024</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="database" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Database Fundamentals" data-ar="أساسيات قواعد البيانات">Database Fundamentals</h3>
+                <div class="certificate-issuer">Information Technology Institute (ITI)</div>
+                <div class="certificate-date" data-en="Sep 2024" data-ar="سبتمبر 2024">Sep 2024</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Introduction to Cybersecurity" data-ar="مقدمة في الأمن السيبراني">Introduction to Cybersecurity</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Jan 2025" data-ar="يناير 2025">Jan 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="network" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Network Technician Career Path" data-ar="مسار فني الشبكات">Network Technician Career Path</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Junior Cybersecurity Analyst" data-ar="محلل أمن سيبراني مبتدئ">Junior Cybersecurity Analyst</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="terminal" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">Ethical Hacker</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Introduction to IoT" data-ar="مقدمة في إنترنت الأشياء">Introduction to IoT</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="Introduction to Data Science" data-ar="مقدمة في علم البيانات">Introduction to Data Science</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i data-lucide="languages" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title" data-en="English for IT (CEFR B2)" data-ar="الإنجليزية لتقنية المعلومات (CEFR B2)">English for IT (CEFR B2)</h3>
+                <div class="certificate-issuer">Cisco & OpenEDG</div>
+                <div class="certificate-date" data-en="Feb 2025" data-ar="فبراير 2025">Feb 2025</div>
+            </div>
+            
+            <div class="certificate-card in-progress">
+                <div class="certificate-icon">
+                    <i data-lucide="router" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">CCNA Certification</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <span class="certificate-progress" data-en="In Progress" data-ar="قيد التنفيذ">In Progress</span>
+            </div>
+            
+            <div class="certificate-card in-progress">
+                <div class="certificate-icon">
+                    <i data-lucide="server" class="w-6 h-6"></i>
+                </div>
+                <h3 class="certificate-title">CCNP Certification</h3>
+                <div class="certificate-issuer">Cisco Networking Academy</div>
+                <span class="certificate-progress" data-en="In Progress" data-ar="قيد التنفيذ">In Progress</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <div class="page-nav">
+        <a href="projects.html" class="page-nav-prev magnetic-btn cursor-none" data-cursor="hover">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span data-en="Projects" data-ar="المشاريع">Projects</span>
+        </a>
+        <a href="contact.html" class="page-nav-next magnetic-btn cursor-none" data-cursor="hover">
+            <span data-en="Contact" data-ar="تواصل">Contact</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+    </div>
+
+    <!-- Page Navigation Dots -->
+    <div class="page-nav-dots">
+        <a href="index.html" class="dot" aria-label="Home"></a>
+        <a href="about.html" class="dot" aria-label="About"></a>
+        <a href="experience.html" class="dot" aria-label="Experience"></a>
+        <a href="skills.html" class="dot" aria-label="Skills"></a>
+        <a href="projects.html" class="dot" aria-label="Projects"></a>
+        <a href="certificates.html" class="dot active" aria-label="Certificates"></a>
+        <a href="contact.html" class="dot" aria-label="Contact"></a>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

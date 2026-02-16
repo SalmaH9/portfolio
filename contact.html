@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Salma Hussein Taha">
+    <title>Contact | Salma Hussein Taha</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i data-lucide="sun" class="w-5 h-5 theme-icon-light"></i>
+        <i data-lucide="moon" class="w-5 h-5 theme-icon-dark hidden"></i>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleLanguage()">
+        <span class="lang-current">EN</span>
+        <i data-lucide="globe" class="w-4 h-4"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container visible" id="navbar">
+        <div class="flex justify-between items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="nav-logo cursor-none" data-cursor="hover">
+                SHT<span class="text-[#D4AF37]">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link cursor-none" data-cursor="hover" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="about.html" class="nav-link cursor-none" data-cursor="hover" data-en="About" data-ar="عني">About</a>
+                <a href="experience.html" class="nav-link cursor-none" data-cursor="hover" data-en="Experience" data-ar="الخبرة">Experience</a>
+                <a href="skills.html" class="nav-link cursor-none" data-cursor="hover" data-en="Skills" data-ar="المهارات">Skills</a>
+                <a href="projects.html" class="nav-link cursor-none" data-cursor="hover" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="certificates.html" class="nav-link cursor-none" data-cursor="hover" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+                <a href="contact.html" class="nav-link active cursor-none" data-cursor="hover" data-en="Contact" data-ar="تواصل">Contact</a>
+            </div>
+            <button class="md:hidden text-[var(--text-primary)] p-2" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+            <a href="about.html" class="mobile-link" data-en="About" data-ar="عني">About</a>
+            <a href="experience.html" class="mobile-link" data-en="Experience" data-ar="الخبرة">Experience</a>
+            <a href="skills.html" class="mobile-link" data-en="Skills" data-ar="المهارات">Skills</a>
+            <a href="projects.html" class="mobile-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+            <a href="certificates.html" class="mobile-link" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+            <a href="contact.html" class="mobile-link active" data-en="Contact" data-ar="تواصل">Contact</a>
+            <div class="mobile-lang-toggle" onclick="toggleLanguage()">
+                <span id="mobileLangText">العربية</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="page-section contact-page">
+        <div class="contact-container">
+            <div class="contact-badge">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                <span data-en="Let's Connect" data-ar="لنتواصل">Let's Connect</span>
+            </div>
+            
+            <h2 class="contact-title">
+                <span data-en="Ready to start a" data-ar="مستعدة لبدء">Ready to start a</span>
+                <span class="text-[#D4AF37]" data-en="project" data-ar="مشروع">project</span>?
+            </h2>
+            <p class="contact-subtitle" data-en="I'm currently available for freelance work and full-time opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!" data-ar="أنا متاحة حالياً للعمل الحر والفرصة بدوام كامل. سواء كان لديك سؤال أو تريد فقط أن تقول مرحباً، سأبذل قصارى جهدي للرد عليك!">
+                I'm currently available for freelance work and full-time opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            
+            <div class="contact-links">
+                <a href="mailto:ssth4276@gmail.com" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label" data-en="Email" data-ar="البريد">Email</span>
+                        <span class="contact-value">ssth4276@gmail.com</span>
+                    </div>
+                </a>
+                
+                <a href="https://linkedin.com/in/salma-hussein-a3b103356" target="_blank" rel="noopener noreferrer" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Salma Hussein</span>
+                    </div>
+                </a>
+                
+                <a href="tel:+201063083970" class="contact-link magnetic-btn cursor-none" data-cursor="hover">
+                    <div class="contact-icon">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label" data-en="Phone" data-ar="الهاتف">Phone</span>
+                        <span class="contact-value">+20 106 308 3970</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="contact-cta">
+                <a href="Salma Hussein Taha RESUME.pdf" download class="resume-btn magnetic-btn cursor-none" data-cursor="hover">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span data-en="Download Resume" data-ar="تحميل السيرة الذاتية">Download Resume</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SHT.</div>
+            <p class="footer-text">
+                © <span id="year"></span> <span data-en="Salma Hussein Taha. All rights reserved." data-ar="سلمى حسين طه. جميع الحقوق محفوظة.">Salma Hussein Taha. All rights reserved.</span>
+            </p>
+            <div class="footer-social">
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="GitHub">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="social-link magnetic-btn cursor-none" data-cursor="hover" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Page Navigation -->
+    <div class="page-nav">
+        <a href="certificates.html" class="page-nav-prev magnetic-btn cursor-none" data-cursor="hover">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span data-en="Certificates" data-ar="الشهادات">Certificates</span>
+        </a>
+        <a href="index.html" class="page-nav-next magnetic-btn cursor-none" data-cursor="hover">
+            <span data-en="Home" data-ar="الرئيسية">Home</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+    </div>
+
+    <!-- Page Navigation Dots -->
+    <div class="page-nav-dots">
+        <a href="index.html" class="dot" aria-label="Home"></a>
+        <a href="about.html" class="dot" aria-label="About"></a>
+        <a href="experience.html" class="dot" aria-label="Experience"></a>
+        <a href="skills.html" class="dot" aria-label="Skills"></a>
+        <a href="projects.html" class="dot" aria-label="Projects"></a>
+        <a href="certificates.html" class="dot" aria-label="Certificates"></a>
+        <a href="contact.html" class="dot active" aria-label="Contact"></a>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

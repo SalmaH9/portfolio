@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Salma Hussein Taha - Full Stack Developer & Network Engineer">
+    <title>About | Salma Hussein Taha</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i data-lucide="sun" class="w-5 h-5 theme-icon-light"></i>
+        <i data-lucide="moon" class="w-5 h-5 theme-icon-dark hidden"></i>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle magnetic-btn cursor-none" data-cursor="hover" onclick="toggleLanguage()">
+        <span class="lang-current">EN</span>
+        <i data-lucide="globe" class="w-4 h-4"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container visible" id="navbar">
+        <div class="flex justify-between items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="nav-logo cursor-none" data-cursor="hover">
+                SHT<span class="text-[#D4AF37]">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link cursor-none" data-cursor="hover" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="about.html" class="nav-link active cursor-none" data-cursor="hover" data-en="About" data-ar="عني">About</a>
+                <a href="experience.html" class="nav-link cursor-none" data-cursor="hover" data-en="Experience" data-ar="الخبرة">Experience</a>
+                <a href="skills.html" class="nav-link cursor-none" data-cursor="hover" data-en="Skills" data-ar="المهارات">Skills</a>
+                <a href="projects.html" class="nav-link cursor-none" data-cursor="hover" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="certificates.html" class="nav-link cursor-none" data-cursor="hover" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+                <a href="contact.html" class="nav-link cursor-none" data-cursor="hover" data-en="Contact" data-ar="تواصل">Contact</a>
+            </div>
+            <button class="md:hidden text-[var(--text-primary)] p-2" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+            <a href="about.html" class="mobile-link active" data-en="About" data-ar="عني">About</a>
+            <a href="experience.html" class="mobile-link" data-en="Experience" data-ar="الخبرة">Experience</a>
+            <a href="skills.html" class="mobile-link" data-en="Skills" data-ar="المهارات">Skills</a>
+            <a href="projects.html" class="mobile-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+            <a href="certificates.html" class="mobile-link" data-en="Certificates" data-ar="الشهادات">Certificates</a>
+            <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+            <div class="mobile-lang-toggle" onclick="toggleLanguage()">
+                <span id="mobileLangText">العربية</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="page-section about-page">
+        <div class="section-header text-center">
+            <span class="section-label" data-en="About Me" data-ar="عني">About Me</span>
+            <h2 class="section-title">
+                <span data-en="Passionate about" data-ar="شغوفة بـ">Passionate about</span>
+                <span data-en="technology" data-ar="التقنية">technology</span><br>
+                <span data-en="and innovation" data-ar="والابتكار">and innovation</span>
+            </h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-image-container">
+                <div class="image-frame">
+                    <img src="IMG-20250220-WA0019(1).jpg" alt="Salma Hussein Taha" class="about-image">
+                </div>
+                <div class="experience-float">
+                    <span class="exp-number">5+</span>
+                    <span class="exp-text" data-en="Years<br>Experience" data-ar="سنوات<br>خبرة">Years<br>Experience</span>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <p class="about-text" data-en="I'm a dedicated Third-year Information Technology student at Assiut International Technological University, with hands-on experience spanning Full Stack Web Development, Mobile App Development, and Enterprise Network Engineering." data-ar="أنا طالبة متفوقة في السنة الثالثة بتخصص تكنولوجيا المعلومات في جامعة أسيوط الدولية التكنولوجية، مع خبرة عملية في تطوير الويب الكامل، وتطوير تطبيقات الجوال، وهندسة شبكات المؤسسات.">
+                    I'm a dedicated Third-year Information Technology student at Assiut International Technological University, with hands-on experience spanning Full Stack Web Development, Mobile App Development, and Enterprise Network Engineering.
+                </p>
+                <p class="about-text" data-en="My expertise includes developing robust web and mobile applications using modern technologies like Flutter, Dart, and JavaScript, alongside designing secure network infrastructures with Cisco solutions." data-ar="تشمل خبرتي تطوير تطبيقات ويب وتطبيقات جوال قوية باستخدام تقنيات حديثة مثل Flutter وDart وJavaScript، إلى جانب تصميم بنية شبكات آمنة باستخدام حلول Cisco.">
+                    My expertise includes developing robust web and mobile applications using modern technologies like Flutter, Dart, and JavaScript, alongside designing secure network infrastructures with Cisco solutions.
+                </p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span data-en="10+ Professional Certifications" data-ar="+10 شهادات احترافية">10+ Professional Certifications</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span data-en="Enterprise Network Architecture" data-ar="هندسة شبكات المؤسسات">Enterprise Network Architecture</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-[#D4AF37]"></i>
+                        <span data-en="Cross-Platform Mobile Development" data-ar="تطوير تطبيقات متعددة المنصات">Cross-Platform Mobile Development</span>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5">0</span>
+                        <div class="stat-label" data-en="Projects Completed" data-ar="مشروع منجز">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10">0</span>
+                        <div class="stat-label" data-en="Certifications" data-ar="شهادة">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="99">0</span>
+                        <div class="stat-label" data-en="% Uptime Achieved" data-ar="% وقت تشغيل">% Uptime Achieved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <div class="page-nav">
+        <a href="index.html" class="page-nav-prev magnetic-btn cursor-none" data-cursor="hover">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span data-en="Home" data-ar="الرئيسية">Home</span>
+        </a>
+        <a href="experience.html" class="page-nav-next magnetic-btn cursor-none" data-cursor="hover">
+            <span data-en="Experience" data-ar="الخبرة">Experience</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+    </div>
+
+    <!-- Page Navigation Dots -->
+    <div class="page-nav-dots">
+        <a href="index.html" class="dot" aria-label="Home"></a>
+        <a href="about.html" class="dot active" aria-label="About"></a>
+        <a href="experience.html" class="dot" aria-label="Experience"></a>
+        <a href="skills.html" class="dot" aria-label="Skills"></a>
+        <a href="projects.html" class="dot" aria-label="Projects"></a>
+        <a href="certificates.html" class="dot" aria-label="Certificates"></a>
+        <a href="contact.html" class="dot" aria-label="Contact"></a>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
