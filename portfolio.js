@@ -1,6 +1,6 @@
-// Main JavaScript for Multi-Page Portfolio with Dark/Light Mode
+// portfolio.js
 
-// Initialize when DOM is ready
+// Initialize Lucide Icons
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initApp();
@@ -8,148 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initApp() {
     // Register GSAP Plugins
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // Initialize components
-    initTheme();
+    // Initialize all components
     initCustomCursor();
+    initProgressBar();
     initNavigation();
     initParticles();
-    initPageAnimations();
+    initHeroAnimations();
+    initScrollAnimations();
+    initMagneticButtons();
     initMobileMenu();
-    initLanguage();
-    initPageTransitions();
     
     // Set current year
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
+    document.getElementById('year').textContent = new Date().getFullYear();
 }
 
-// ============================================
-// THEME MANAGEMENT
-// ============================================
-
-function initTheme() {
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme, false);
-}
-
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme, true);
-}
-
-function setTheme(theme, animate) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
-    // Update icons
-    const lightIcon = document.querySelector('.theme-icon-light');
-    const darkIcon = document.querySelector('.theme-icon-dark');
-    
-    if (lightIcon && darkIcon) {
-        if (theme === 'light') {
-            lightIcon.classList.remove('hidden');
-            darkIcon.classList.add('hidden');
-        } else {
-            lightIcon.classList.add('hidden');
-            darkIcon.classList.remove('hidden');
-        }
-    }
-    
-    // Animate transition
-    if (animate) {
-        gsap.to('body', {
-            opacity: 0.8,
-            duration: 0.15,
-            yoyo: true,
-            repeat: 1
-        });
-    }
-}
-
-// ============================================
-// LANGUAGE MANAGEMENT
-// ============================================
-
-let currentLang = localStorage.getItem('language') || 'en';
-
-function initLanguage() {
-    if (currentLang === 'ar') {
-        setLanguage('ar', false);
-    }
-    updateLangToggle();
-}
-
-function toggleLanguage() {
-    const newLang = currentLang === 'en' ? 'ar' : 'en';
-    setLanguage(newLang, true);
-}
-
-function setLanguage(lang, animate) {
-    currentLang = lang;
-    localStorage.setItem('language', lang);
-    
-    const html = document.documentElement;
-    const body = document.body;
-    
-    if (lang === 'ar') {
-        html.setAttribute('dir', 'rtl');
-        html.setAttribute('lang', 'ar');
-        body.style.fontFamily = "'Cairo', 'Inter', sans-serif";
-    } else {
-        html.setAttribute('dir', 'ltr');
-        html.setAttribute('lang', 'en');
-        body.style.fontFamily = "'Inter', sans-serif";
-    }
-    
-    // Update translatable elements
-    const elements = document.querySelectorAll('[data-en][data-ar]');
-    elements.forEach(el => {
-        const text = el.getAttribute(`data-${lang}`);
-        if (animate) {
-            gsap.to(el, {
-                opacity: 0,
-                y: -10,
-                duration: 0.2,
-                onComplete: () => {
-                    el.textContent = text;
-                    gsap.to(el, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.2
-                    });
-                }
-            });
-        } else {
-            el.textContent = text;
-        }
-    });
-    
-    updateLangToggle();
-}
-
-function updateLangToggle() {
-    const toggle = document.querySelector('.lang-toggle .lang-current');
-    const mobileLangText = document.getElementById('mobileLangText');
-    
-    if (toggle) {
-        toggle.textContent = currentLang === 'en' ? 'EN' : 'AR';
-    }
-    
-    if (mobileLangText) {
-        mobileLangText.textContent = currentLang === 'en' ? 'العربية' : 'English';
-    }
-}
-
-// ============================================
-// CUSTOM CURSOR
-// ============================================
-
+// Custom Cursor
 function initCustomCursor() {
     const cursor = document.querySelector('.cursor');
     const cursorDot = document.querySelector('.cursor-dot');
@@ -167,11 +42,13 @@ function initCustomCursor() {
     });
 
     function animateCursor() {
+        // Smooth follow for outer cursor
         cursorX += (mouseX - cursorX) * 0.15;
         cursorY += (mouseY - cursorY) * 0.15;
         cursor.style.left = cursorX + 'px';
         cursor.style.top = cursorY + 'px';
 
+        // Faster follow for dot
         dotX += (mouseX - dotX) * 0.5;
         dotY += (mouseY - dotY) * 0.5;
         cursorDot.style.left = dotX + 'px';
@@ -181,43 +58,72 @@ function initCustomCursor() {
     }
     animateCursor();
 
+    // Hover effects
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 }
 
-// ============================================
-// NAVIGATION
-// ============================================
-
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    
-    // Show navbar on scroll for non-hero pages
-    if (!document.querySelector('.hero-section')) {
-        navbar.classList.add('visible');
-    } else {
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 100) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        }, { passive: true });
-    }
+// Progress Bar
+function initProgressBar() {
+    gsap.to('.progress-bar', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.3
+        }
+    });
 }
 
-// ============================================
-// PARTICLES
-// ============================================
+// Navigation
+function initNavigation() {
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
 
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.classList.add('visible');
+        } else {
+            navbar.classList.remove('visible');
+        }
+        
+        lastScroll = currentScroll;
+    }, { passive: true });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
+            if (target) {
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+
+                gsap.to(window, {
+                    duration: 1.2,
+                    scrollTo: { y: target, offsetY: 80 },
+                    ease: 'power3.inOut'
+                });
+            }
+        });
+    });
+}
+
+// Floating Particles
 function initParticles() {
     const container = document.getElementById('particles');
-    if (!container) return;
-    
-    const particleCount = window.matchMedia('(pointer: coarse)').matches ? 15 : 30;
+    const particleCount = 30;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -229,62 +135,91 @@ function initParticles() {
     }
 }
 
-// ============================================
-// PAGE ANIMATIONS
-// ============================================
+// Hero Animations
+function initHeroAnimations() {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-function initPageAnimations() {
-    // Hero animations
-    if (document.querySelector('.hero-section')) {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    // Animate title lines
+    tl.to('.title-line', {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        delay: 0.3
+    })
+    .to('.title-underline', {
+        width: '200px',
+        duration: 0.8,
+        ease: 'power2.out'
+    }, '-=0.6')
+    .to('.hero-badge', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+    }, '-=0.4')
+    .to('.hero-roles', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+    }, '-=0.4')
+    .to('.hero-subtitle', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+    }, '-=0.4')
+    .to('.hero-buttons', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+    }, '-=0.4')
+    .to('.scroll-indicator', {
+        opacity: 1,
+        duration: 0.8
+    }, '-=0.2')
+    .to('.side-decoration', {
+        opacity: 1,
+        duration: 1
+    }, '-=0.5');
 
-        tl.from('.title-line', {
-            opacity: 0,
-            y: 100,
-            duration: 1.2,
-            stagger: 0.2,
-            delay: 0.3
-        })
-        .from('.hero-badge', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8
-        }, '-=0.8')
-        .from('.hero-roles', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8
-        }, '-=0.6')
-        .from('.hero-subtitle', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8
-        }, '-=0.6')
-        .from('.hero-buttons', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8
-        }, '-=0.6')
-        .from('.side-decoration', {
-            opacity: 0,
-            duration: 1
-        }, '-=0.4');
+    // Role rotation
+    const roles = document.querySelectorAll('.role');
+    let currentRole = 0;
 
-        // Role rotation
-        const roles = document.querySelectorAll('.role');
-        let currentRole = 0;
-        setInterval(() => {
-            roles.forEach(r => r.classList.remove('active'));
-            currentRole = (currentRole + 1) % roles.length;
-            roles[currentRole].classList.add('active');
-        }, 3000);
-    }
+    setInterval(() => {
+        roles.forEach(r => r.classList.remove('active'));
+        currentRole = (currentRole + 1) % roles.length;
+        roles[currentRole].classList.add('active');
+    }, 3000);
 
-    // Section animations
+    // Parallax for orbs
+    gsap.to('.orb-1', {
+        y: -200,
+        scrollTrigger: {
+            trigger: '.hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        }
+    });
+
+    gsap.to('.orb-2', {
+        y: 100,
+        scrollTrigger: {
+            trigger: '.hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        }
+    });
+}
+
+// Scroll Animations
+function initScrollAnimations() {
+    // Section headers
     gsap.utils.toArray('.section-label').forEach(label => {
-        gsap.from(label, {
-            opacity: 0,
-            x: -30,
+        gsap.to(label, {
+            opacity: 1,
+            x: 0,
             duration: 0.8,
             scrollTrigger: {
                 trigger: label,
@@ -295,9 +230,9 @@ function initPageAnimations() {
     });
 
     gsap.utils.toArray('.section-title').forEach(title => {
-        gsap.from(title, {
-            opacity: 0,
-            y: 30,
+        gsap.to(title, {
+            opacity: 1,
+            y: 0,
             duration: 1,
             scrollTrigger: {
                 trigger: title,
@@ -307,52 +242,186 @@ function initPageAnimations() {
         });
     });
 
-    // Animate cards on scroll
-    gsap.utils.toArray('.skill-card, .certificate-card, .timeline-item, .project-card, .stat-item').forEach((el, i) => {
-        gsap.from(el, {
-            opacity: 0,
-            y: 30,
+    // About section
+    gsap.to('.about-image-container', {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+            trigger: '.about-grid',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    gsap.to('.experience-float', {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        delay: 0.4,
+        scrollTrigger: {
+            trigger: '.about-grid',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    gsap.to('.about-content', {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        scrollTrigger: {
+            trigger: '.about-grid',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // Stats counter
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach((item, index) => {
+        gsap.to(item, {
+            opacity: 1,
+            y: 0,
             duration: 0.8,
-            delay: i * 0.1,
+            delay: index * 0.15,
             scrollTrigger: {
-                trigger: el,
+                trigger: '.about-stats',
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+                onEnter: () => animateCounter(item)
+            }
+        });
+    });
+
+    // Timeline
+    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+        gsap.to(item, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            delay: i * 0.2,
+            scrollTrigger: {
+                trigger: item,
                 start: 'top 85%',
                 toggleActions: 'play none none reverse'
             }
         });
     });
 
-    // Counter animation
-    const statItems = document.querySelectorAll('.stat-item');
-    statItems.forEach(item => {
-        const number = item.querySelector('.stat-number');
-        if (number) {
-            const target = parseInt(number.getAttribute('data-count'));
-            ScrollTrigger.create({
-                trigger: item,
+    // Skills
+    gsap.utils.toArray('.skill-card').forEach((card, i) => {
+        gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            scrollTrigger: {
+                trigger: card,
                 start: 'top 85%',
-                onEnter: () => {
-                    gsap.to(number, {
-                        innerHTML: target,
-                        duration: 2,
-                        snap: { innerHTML: 1 },
-                        ease: 'power2.out'
-                    });
-                }
-            });
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+
+    // Projects
+    gsap.utils.toArray('.project-card').forEach((card, i) => {
+        gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+
+    // Certificates
+    gsap.utils.toArray('.certificate-card').forEach((card, i) => {
+        gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: i * 0.1,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+
+    // Contact
+    const contactElements = ['.contact-badge', '.contact-title', '.contact-subtitle', '.contact-links', '.contact-cta'];
+    contactElements.forEach((el, i) => {
+        gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.15,
+            scrollTrigger: {
+                trigger: '.contact-container',
+                start: 'top 75%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+}
+
+// Counter Animation
+function animateCounter(element) {
+    const number = element.querySelector('.stat-number');
+    const target = parseInt(number.getAttribute('data-count'));
+    
+    gsap.to(number, {
+        innerHTML: target,
+        duration: 2,
+        snap: { innerHTML: 1 },
+        ease: 'power2.out',
+        onUpdate: function() {
+            number.innerHTML = Math.round(this.targets()[0].innerHTML);
         }
     });
 }
 
-// ============================================
-// MOBILE MENU
-// ============================================
+// Magnetic Buttons
+function initMagneticButtons() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
+    const magneticElements = document.querySelectorAll('.magnetic-btn');
+
+    magneticElements.forEach(elem => {
+        elem.addEventListener('mousemove', (e) => {
+            const rect = elem.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            gsap.to(elem, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+
+        elem.addEventListener('mouseleave', () => {
+            gsap.to(elem, {
+                x: 0,
+                y: 0,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+    });
+}
+
+// Mobile Menu
 function initMobileMenu() {
     const btn = document.getElementById('mobileMenuBtn');
     const menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
-    
     let isOpen = false;
 
     btn.addEventListener('click', () => {
@@ -368,6 +437,7 @@ function initMobileMenu() {
         lucide.createIcons();
     });
 
+    // Close menu on link click
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             isOpen = false;
@@ -379,54 +449,23 @@ function initMobileMenu() {
     });
 }
 
-// ============================================
-// PAGE TRANSITIONS
-// ============================================
-
-function initPageTransitions() {
-    // Add click handlers for smooth page transitions
-    document.querySelectorAll('a[href$=".html"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href && !href.startsWith('#') && !this.hasAttribute('download')) {
-                e.preventDefault();
-                
-                gsap.to('body', {
-                    opacity: 0,
-                    duration: 0.3,
-                    onComplete: () => {
-                        window.location.href = href;
-                    }
-                });
-            }
+// Scroll to section helper
+function scrollToSection(id) {
+    const target = document.getElementById(id);
+    if (target) {
+        gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: target, offsetY: 80 },
+            ease: 'power3.inOut'
         });
-    });
-
-    // Fade in on page load
-    gsap.from('body', {
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power2.out'
-    });
+    }
 }
 
-// ============================================
-// PERFORMANCE
-// ============================================
-
+// Performance: Pause animations when tab is hidden
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         gsap.globalTimeline.pause();
     } else {
         gsap.globalTimeline.resume();
     }
-});
-
-// Handle resize
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        ScrollTrigger.refresh();
-    }, 250);
 });
